@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  videoanalyzer:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - VIDEO_INPUT_PATH=C:\Users\USER\biryani_bot\hemanth\videoanalyzer\video_input
+    restart: always
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    restart: always
