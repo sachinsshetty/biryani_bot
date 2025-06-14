@@ -1,5 +1,36 @@
 Biryani Bot
 
+
+export DWANI_API_KEY='your_api_key_here'
+export DWANI_API_BASE_URL='https://dwani-biryani.hf.space'
+
+git clone https://github.com/sachinsshetty/biryani_bot
+
+cd sachin/server
+
+python vlm.py
+
+or 
+```python
+import dwani
+import os
+
+dwani.api_key = os.getenv("DWANI_API_KEY")
+
+dwani.api_base = os.getenv("DWANI_API_BASE_URL")
+
+
+result = dwani.Vision.caption_direct(
+    file_path="image.png",
+    query="Describe this logo",
+    model="gemma3"
+)
+print(result)
+```
+
+
+<!-- 
+
  vllm serve google/gemma-3-4b-it     --served-model-name gemma3     --host 0.0.0.0     --port 7890     --gpu-memory-utilization 0.9     --tensor-parallel-size 1     --max-model-len 16384     --dtype bfloat16 
 
 
@@ -51,4 +82,7 @@ mkdir hf_models
 huggingface-cli download google/gemma-3-27b-it-qat-q4_0-gguf --local-dir hf_models/
 
 
+
  ./build/bin/llama-server   --model hf_models/gemma-3-27b-it-q4_0.gguf  --mmproj hf_models/mmproj-model-f16-27B.gguf  --host 0.0.0.0   --port 7890   --n-gpu-layers 100   --threads 4   --ctx-size 4096   --batch-size 256
+
+ -->
