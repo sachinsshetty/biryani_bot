@@ -27,9 +27,9 @@ def _describe_image_sync(image):
     try:
         result = dwani.Vision.caption_direct(
             file_path=temp_file,
-            query="Describe the infrared image",
+            query="Describe the image",
             model="gemma3",
-            system_prompt="Provide a detailed description of the infrared image."
+            system_prompt="Provide a desc image."
         )
         return result
     finally:
