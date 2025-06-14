@@ -2,12 +2,21 @@
 
 https://github.com/dwani-ai/dwani-api-server.git
 
+git clone https://github.com/dwani-ai/dwani-api-server.git
+
 cd dwani-api-server
 
 git checkout astra
 
 
+python3.10 -m venv venv
+source venv/bin/activate
+
+
 https://github.com/dwani-ai/docs-indic-server.git
+
+git clone https://github.com/dwani-ai/docs-indic-server.git
+
 cd docs-indic-server
 git checkout astra
 
