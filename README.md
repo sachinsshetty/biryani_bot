@@ -1,4 +1,38 @@
-Biryani bot
+Biryani 
+
+
+export DWANI_API_KEY='your_api_key_here'
+export DWANI_API_BASE_URL='https://dwani-biryani.hf.space'
+
+git clone https://github.com/sachinsshetty/biryani_bot
+
+cd sachin/server
+
+python vlm.py
+
+or 
+```python
+import dwani
+import os
+
+dwani.api_key = os.getenv("DWANI_API_KEY")
+
+dwani.api_base = os.getenv("DWANI_API_BASE_URL")
+
+
+result = dwani.Vision.caption_direct(
+    file_path="image.png",
+    query="Describe this logo",
+    model="gemma3"
+)
+print(result)
+```
+
+
+----
+
+
+
 
 - Robot [actions](action.md)
 
