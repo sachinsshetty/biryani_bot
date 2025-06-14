@@ -6,6 +6,7 @@ import dwani
 import os
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
+from queue import LifoQueue
 
 # Set up dwani API configuration
 dwani.api_key = os.getenv("DWANI_API_KEY")
@@ -13,6 +14,9 @@ dwani.api_base = os.getenv("DWANI_API_BASE_URL")
 
 # Thread pool executor for running blocking tasks
 executor = ThreadPoolExecutor(max_workers=1)
+
+# LIFO queue to store frames
+frame_queue = LifoQueue(maxsize=1)  # Limit to 1 to keep only the latest frame
 
 # Synchronous function to describe the image (to be run in a thread)
 def _describe_image_sync(image):
@@ -27,8 +31,6 @@ def _describe_image_sync(image):
             model="gemma3",
             system_prompt="Provide a detailed description of the infrared image."
         )
-
-        print(result)
         return result
     finally:
         if os.path.exists(temp_file):
@@ -41,6 +43,22 @@ async def describe_image(image):
     result = await loop.run_in_executor(executor, _describe_image_sync, image)
     return result
 
+# Async function to process frames from the queue
+async def process_queue():
+    while True:
+        # Get the latest frame from the queue (blocks until a frame is available)
+        ir_image = await asyncio.get_event_loop().run_in_executor(None, frame_queue.get)
+        try:
+            description = await describe_image(ir_image.copy())
+            print(f"Image description: {description}")
+        except Exception as e:
+            print(f"Error in description: {e}")
+        finally:
+            # Mark the task as done to allow the queue to accept new frames
+            frame_queue.task_done()
+        # Allow other tasks to run
+        await asyncio.sleep(0)
+
 # Main async function to run the pipeline
 async def main():
     # Configure infrared stream (left IR sensor, Y8 format)
@@ -50,9 +68,11 @@ async def main():
 
     pipeline.start(config)
 
-    last_description_time = time.time()
+    # Start the queue processing task
+    queue_task = asyncio.create_task(process_queue())
+
+    last_queue_time = time.time()
     description_interval = 3  # seconds
-    description_task = None
 
     try:
         while True:
@@ -64,22 +84,21 @@ async def main():
             # Convert to numpy array (already monochrome)
             ir_image = np.asanyarray(ir_frame.get_data())
 
-            # Check if 3 seconds have passed and no description task is running
+            # Add frame to queue every 3 seconds if queue is not full
             current_time = time.time()
-            if (current_time - last_description_time >= description_interval and
-                    (description_task is None or description_task.done())):
-                # Start a new description task
-                description_task = asyncio.create_task(describe_image(ir_image.copy()))
-                last_description_time = current_time
-
-            # Check if description task is complete
-            if description_task and description_task.done():
-                try:
-                    description = description_task.result()
-                    print(f"Image description: {description}")
-                except Exception as e:
-                    print(f"Error in description: {e}")
-                description_task = None
+            if current_time - last_queue_time >= description_interval:
+                if not frame_queue.full():
+                    frame_queue.put_nowait(ir_image.copy())  # Add latest frame to queue
+                    last_queue_time = current_time
+                else:
+                    # If queue is full, remove the old frame and add the new one
+                    try:
+                        frame_queue.get_nowait()
+                        frame_queue.task_done()
+                        frame_queue.put_nowait(ir_image.copy())
+                        last_queue_time = current_time
+                    except:
+                        pass  # Queue might be empty due to concurrent access
 
             cv2.imshow('RealSense IR (Monochrome)', ir_image)
             if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -89,6 +108,12 @@ async def main():
             await asyncio.sleep(0)
 
     finally:
+        # Cancel the queue processing task
+        queue_task.cancel()
+        try:
+            await queue_task
+        except asyncio.CancelledError:
+            pass
         pipeline.stop()
         cv2.destroyAllWindows()
         executor.shutdown(wait=True)
