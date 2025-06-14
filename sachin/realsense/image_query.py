@@ -7,6 +7,7 @@ import os
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 from queue import LifoQueue
+import requests
 
 # Set up dwani API configuration
 dwani.api_key = os.getenv("DWANI_API_KEY")
@@ -15,26 +16,45 @@ dwani.api_base = os.getenv("DWANI_API_BASE_URL")
 # Thread pool executor for running blocking tasks
 executor = ThreadPoolExecutor(max_workers=1)
 
-# LIFO queue to store frames
-frame_queue = LifoQueue(maxsize=1)  # Limit to 1 to keep only the latest frame
+# LIFO queue to store frames (increased to 2 for slight buffering)
+frame_queue = LifoQueue(maxsize=2)
 
 # Synchronous function to describe the image (to be run in a thread)
 def _describe_image_sync(image):
     print("Processing image for description...")
-    temp_file = "temp_ir_image.jpg"
-    cv2.imwrite(temp_file, image)
+    # Resize image to reduce file size
+    resized_image = cv2.resize(image, (320, 240), interpolation=cv2.INTER_AREA)
+    temp_file = "temp_rgb_image.jpg"
+    # Save with moderate JPEG quality
+    cv2.imwrite(temp_file, resized_image, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
     
-    try:
-        result = dwani.Vision.caption_direct(
-            file_path=temp_file,
-            query="Describe the image",
-            model="gemma3",
-            system_prompt="Provide a desc image."
-        )
-        return result
-    finally:
-        if os.path.exists(temp_file):
-            os.remove(temp_file)
+    max_retries = 3
+    retry_delay = 1  # seconds
+    for attempt in range(max_retries):
+        try:
+            result = dwani.Vision.caption_direct(
+                file_path=temp_file,
+                query="Describe the image",
+                model="gemma3",
+                system_prompt="Provide a description of the image."
+            )
+            return result
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 429:  # Rate limit
+                print(f"Rate limit hit, retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                raise e
+        except Exception as e:
+            print(f"Error in API call: {e}")
+            if attempt == max_retries - 1:
+                raise e
+            time.sleep(retry_delay)
+        finally:
+            if os.path.exists(temp_file):
+                os.remove(temp_file)
+    return None  # Return None if all retries fail
 
 # Asynchronous wrapper for describe_image
 async def describe_image(image):
@@ -47,10 +67,13 @@ async def describe_image(image):
 async def process_queue():
     while True:
         # Get the latest frame from the queue (blocks until a frame is available)
-        ir_image = await asyncio.get_event_loop().run_in_executor(None, frame_queue.get)
+        rgb_image = await asyncio.get_event_loop().run_in_executor(None, frame_queue.get)
         try:
-            description = await describe_image(ir_image.copy())
-            print(f"Image description: {description}")
+            description = await describe_image(rgb_image.copy())
+            if description:
+                print(f"Image description: {description}")
+            else:
+                print("Failed to get description after retries.")
         except Exception as e:
             print(f"Error in description: {e}")
         finally:
@@ -61,10 +84,10 @@ async def process_queue():
 
 # Main async function to run the pipeline
 async def main():
-    # Configure infrared stream (left IR sensor, Y8 format)
+    # Configure RGB stream with reduced frame rate
     pipeline = rs.pipeline()
     config = rs.config()
-    config.enable_stream(rs.stream.infrared, 1, 640, 480, rs.format.y8, 30)  # '1' is the left IR sensor
+    config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 15)  # Reduced to 15 FPS
 
     pipeline.start(config)
 
@@ -77,30 +100,30 @@ async def main():
     try:
         while True:
             frames = pipeline.wait_for_frames()
-            ir_frame = frames.get_infrared_frame(1)  # Get left IR frame
-            if not ir_frame:
+            rgb_frame = frames.get_color_frame()  # Get RGB frame
+            if not rgb_frame:
                 continue
 
-            # Convert to numpy array (already monochrome)
-            ir_image = np.asanyarray(ir_frame.get_data())
+            # Convert to numpy array (already in BGR format for OpenCV)
+            rgb_image = np.asanyarray(rgb_frame.get_data())
 
             # Add frame to queue every 3 seconds if queue is not full
             current_time = time.time()
             if current_time - last_queue_time >= description_interval:
                 if not frame_queue.full():
-                    frame_queue.put_nowait(ir_image.copy())  # Add latest frame to queue
+                    frame_queue.put_nowait(rgb_image.copy())  # Add latest frame to queue
                     last_queue_time = current_time
                 else:
                     # If queue is full, remove the old frame and add the new one
                     try:
                         frame_queue.get_nowait()
                         frame_queue.task_done()
-                        frame_queue.put_nowait(ir_image.copy())
+                        frame_queue.put_nowait(rgb_image.copy())
                         last_queue_time = current_time
                     except:
                         pass  # Queue might be empty due to concurrent access
 
-            cv2.imshow('RealSense IR (Monochrome)', ir_image)
+            cv2.imshow('RealSense RGB', rgb_image)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 

@@ -9,7 +9,15 @@ sudo docker run --runtime nvidia -it --rm -p 8000:8000 slabstech/dwani-vllm
  vllm serve google/gemma-3-4b-it     --served-model-name gemma3     --host 0.0.0.0     --port 8000     --gpu-memory-utilization 0.9     --tensor-parallel-size 1     --max-model-len 16384     --dtype bfloat16 
 
 
-
+vllm serve Qwen/Qwen2.5-VL-7B-Instruct \
+    --served-model-name qwen2.5-vl \
+    --host 0.0.0.0 \
+    --port 8000 \
+    --gpu-memory-utilization 0.9 \
+    --tensor-parallel-size 1 \
+    --max-model-len 16384 \
+    --dtype bfloat16 \
+    --trust-remote-code
 
 
 export DWANI_API_BASE_URL_VISION=http://127.0.0.1:8000
