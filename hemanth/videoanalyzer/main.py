@@ -105,12 +105,20 @@ def analyze_video_cloud(request: VideoAnalysisRequest):
             raise HTTPException(status_code=400, detail="No frames extracted from video.")
 
         summaries = []
-        for i in range(0, len(frame_paths)):
-            print(f"image path:{frame_paths[i]}")
+        for i in range(0, len(frame_paths), request.batch_size):
+            batch = frame_paths[i:i+request.batch_size]
             user_content = []
+            for f in batch:
+                img_b64 = aiclient.encode_image_to_base64(f)
+                user_content.append({
+                    "type": "image_url",
+                    "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}
+                })
             user_content.append({
                 "type": "text",
-                "text": "Describe the main events and actions observed in this video segment, then outline a corresponding action policy for the Lerobot"
+                "text": "Describe the main events and actions observed in this video segment, "
+                "then outline a corresponding action policy for the Lerobot framework that enables a robot to replicate these actions for completing recipe."
+                #"text": "Describe the key events and actions in this segment of the video."
             })
             messages = [
                 {
@@ -123,7 +131,7 @@ def analyze_video_cloud(request: VideoAnalysisRequest):
                 }
             ]
             #print(f"messages: {messages}")
-            summary = aiclient.call_dwani_Vision(frame_paths[i], messages)
+            summary = aiclient.call_dwani_chat_raw(messages)
             #print(f"messages: {summary}")
             summaries.append(summary)
 
@@ -133,7 +141,7 @@ def analyze_video_cloud(request: VideoAnalysisRequest):
         save_to_file(sf_path,full_summary)
         #convert whole summaries to vla input
         prompt = f"Summarize the following context as concisely as possible, capturing only the essential information and main points. Remove all unnecessary details, examples, or subplots. Present the summary in a format suitable for smolvla input—extremely brief, focused, and clear. Context:[{full_summary}]"
-        action_tasks = aiclient.call_dwani_chat(prompt)
+        action_tasks = aiclient.call_dwani_chat_raw(prompt)
         print(f"action_tasks = {action_tasks}")
         at_path = os.path.join(workdir, "summary.txt")
         save_to_file(at_path,action_tasks)

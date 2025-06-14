@@ -41,3 +41,24 @@ def call_dwani_chat(prompt):
     )
     #print(response)
     return response["answer"]
+
+def call_dwani_Vision(imagePath, prompt):
+    dwani.api_key = settings.DWANI_API_KEY
+    dwani.api_base = settings.DWANI_API_URL
+    response = dwani.Vision.caption_direct(
+        file_path=imagePath,
+        query=prompt,
+        model=settings.AI_MODEL_NAME
+    )
+    #print(response)
+    return response["answer"]
+
+def call_dwani_chat_raw(prompt):
+    dwani.api_key = settings.DWANI_API_KEY
+    dwani.api_base = settings.DWANI_API_URL
+    response = dwani.Vision.caption_direct_raw(
+        query=prompt,
+        model=settings.AI_MODEL_NAME
+    )
+    print(response)
+    return response["answer"]
