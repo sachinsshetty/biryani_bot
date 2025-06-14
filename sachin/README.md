@@ -28,8 +28,24 @@ result = dwani.Vision.caption_direct(
 print(result)
 ```
 
+https://github.com/dwani-ai/docs-indic-server.git
+cd docs-indic-server
+git checkout astra
+
+pip install -r robot.txt
+python src/server/robot_api.py --host 0.0.0.0 --port 7861
+
 
 <!-- 
+
+sudo docker run --gpus all -it --rm nvcr.io/nvidia/tritonserver:25.01-vllm-python-py3
+
+
+nvcr.io/nvidia/tritonserver:25.01-vllm-python-py3
+
+
+nvcr.io/nvidia/tritonserver:25.04-vllm-python-py3
+
 
  vllm serve google/gemma-3-4b-it     --served-model-name gemma3     --host 0.0.0.0     --port 7890     --gpu-memory-utilization 0.9     --tensor-parallel-size 1     --max-model-len 16384     --dtype bfloat16 
 
