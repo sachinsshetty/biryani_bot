@@ -22,3 +22,33 @@ export SPEECH_RATE_LIMIT="5/minute"
 export ENCRYPTION_KEY="tete"
 export DEFAULT_ADMIN_USER="admin"
 export DEFAULT_ADMIN_PASSWORD="dwani-987-123"
+
+
+sudo apt-get update
+sudo apt-get install ninja-build
+
+sudo apt-get install libcurl4-openssl-dev
+
+sudo apt-get install -y build-essential python3-dev python3-setuptools make cmake
+sudo apt-get install -y ffmpeg libavcodec-dev libavfilter-dev libavformat-dev libavutil-dev
+sudo apt install -y poppler-utils
+mkdir dwani_org
+cd dwani_org
+
+
+git clone https://github.com/ggml-org/llama.cpp.git
+cd llama.cpp
+
+cmake -B build -DGGML_CUDA=ON
+
+cmake --build build --config Release -j2
+
+python -m venv --system-site-packages venv
+source venv/bin/activate
+pip install huggingface_hub
+mkdir hf_models 
+
+huggingface-cli download google/gemma-3-27b-it-qat-q4_0-gguf --local-dir hf_models/
+
+
+ ./build/bin/llama-server   --model hf_models/gemma-3-27b-it-q4_0.gguf  --mmproj hf_models/mmproj-model-f16-27B.gguf  --host 0.0.0.0   --port 7890   --n-gpu-layers 100   --threads 4   --ctx-size 4096   --batch-size 256
