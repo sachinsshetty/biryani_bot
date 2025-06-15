@@ -1,13 +1,25 @@
+Inference Setup
 
-Add - daemon.json to /etc/docker/
-- sudo systemctl restart docker
+- GPU Server 
+  - Add - daemon.json to /etc/docker/
+  - sudo systemctl restart docker
 
-sudo docker run --runtime nvidia -it --rm -p 8000:8000 slabstech/dwani-vllm
+- Start VLLm container
+  - sudo docker run --runtime nvidia -it --rm -p 8000:8000 slabstech/dwani-vllm
+  - vllm serve google/gemma-3-4b-it     --served-model-name gemma3     --host 0.0.0.0     --port 8000     --gpu-memory-utilization 0.9     --tensor-parallel-size 1     --max-model-len 16384     --dtype bfloat16 
 
-
-
- vllm serve google/gemma-3-4b-it     --served-model-name gemma3     --host 0.0.0.0     --port 8000     --gpu-memory-utilization 0.9     --tensor-parallel-size 1     --max-model-len 16384     --dtype bfloat16 
-
+- vllm serve google/gemma-3-4b-it \
+  --served-model-name gemma3 \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --gpu-memory-utilization 0.85 \
+  --tensor-parallel-size 1 \
+  --max-model-len 8192 \
+  --dtype bfloat16 \
+  --max-num-batched-tokens 4096 \
+  --enable-chunked-prefill \
+  --max-num-seq 32 \
+  --enforce-eager 
 
 vllm serve Qwen/Qwen2.5-VL-7B-Instruct \
     --served-model-name qwen2.5-vl \
