@@ -1,5 +1,12 @@
 Biryani 
 
+- [Inference Setup](sachin/docs/setup.md)
+
+- World State
+  - cd sachin/realsense
+  - python world_state.py
+
+- Simple Inference
 
 export DWANI_API_KEY='your_api_key_here'
 

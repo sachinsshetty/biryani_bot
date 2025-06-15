@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  vllm-server:
+    image: slabstech/dwani-vllm
+    runtime: nvidia
+    ports:
+      - "8000:8000"
+    volumes:
+      - /home/user/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      - HF_HOME=/root/.cache/huggingface
+      - HUGGINGFACE_HUB_CACHE=/root/.cache/huggingface/hub
+      - TRANSFORMERS_CACHE=/root/.cache/huggingface/hub
+    command:
+      - vllm
+      - serve
+      - google/gemma-3-4b-it
+      - --served-model-name
+      - gemma3
+      - --host
+      - 0.0.0.0
+      - --port
+      - 8000
+      - --gpu-memory-utilization
+      - "0.85"
+      - --tensor-parallel-size
+      - "1"
+      - --max-model-len
+      - "8192"
+      - --dtype
+      - bfloat16
+      - --max-num-batched-tokens
+      - "4096"
+      - --enable-chunked-prefill
+      - --max-num-seq
+      - "32"
+      - --enforce-eager
+      - --trust-remote-code
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+    tty: true
+    stdin_open: true
+    restart: unless-stopped

@@ -21,8 +21,15 @@ export PYTHONPATH=$PYTHONPATH:/usr/local/lib
 python3.10 -m venv venv
 source venv/bin/activate
 
-pip install pyrealsense2 numpy opencv-python
+pip install pyrealsense2 numpy opencv-python dwani paho-mqtt
 
 
+python world_state.py
 
-python d430.py
+-- 
+
+MQTT server
+
+sudo apt install mosquitto mosquitto-clients -y
+
+sudo systemctl status mosquitto

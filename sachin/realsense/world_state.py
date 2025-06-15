@@ -8,6 +8,8 @@ import asyncio
 from concurrent.futures import ThreadPoolExecutor
 from queue import LifoQueue
 import requests
+import json
+from datetime import datetime
 
 # Set up dwani API configuration
 dwani.api_key = os.getenv("DWANI_API_KEY")
@@ -18,6 +20,25 @@ executor = ThreadPoolExecutor(max_workers=1)
 
 # LIFO queue to store frames (increased to 2 for slight buffering)
 frame_queue = LifoQueue(maxsize=2)
+
+# World state dictionary
+world_state = {
+    "timestamp": None,
+    "description": None
+}
+
+# JSON Lines file for storing world state (append mode)
+WORLD_STATE_FILE = "world_state.jsonl"
+
+# Function to save world state to JSON Lines file (append mode)
+def save_world_state():
+    try:
+        with open(WORLD_STATE_FILE, 'a') as f:
+            json.dump(world_state, f)
+            f.write('\n')  # Add newline to separate JSON objects
+        print(f"World state appended to {WORLD_STATE_FILE}")
+    except Exception as e:
+        print(f"Error saving world state: {e}")
 
 # Synchronous function to describe the image (to be run in a thread)
 def _describe_image_sync(image):
@@ -34,7 +55,7 @@ def _describe_image_sync(image):
         try:
             result = dwani.Vision.caption_direct(
                 file_path=temp_file,
-                query="Describe the image",
+                query="Provide the list and count of important objects in the image as json format. Do not explain.",
                 model="gemma3",
                 system_prompt="Provide a description of the image."
             )
@@ -65,13 +86,19 @@ async def describe_image(image):
 
 # Async function to process frames from the queue
 async def process_queue():
+    global world_state
     while True:
         # Get the latest frame from the queue (blocks until a frame is available)
-        rgb_image = await asyncio.get_event_loop().run_in_executor(None, frame_queue.get)
+        frame_data = await asyncio.get_event_loop().run_in_executor(None, frame_queue.get)
+        rgb_image, timestamp = frame_data  # Unpack image and timestamp
         try:
             description = await describe_image(rgb_image.copy())
             if description:
                 print(f"Image description: {description}")
+                # Update world state
+                world_state["timestamp"] = timestamp
+                world_state["description"] = description
+                save_world_state()
             else:
                 print("Failed to get description after retries.")
         except Exception as e:
@@ -111,14 +138,17 @@ async def main():
             current_time = time.time()
             if current_time - last_queue_time >= description_interval:
                 if not frame_queue.full():
-                    frame_queue.put_nowait(rgb_image.copy())  # Add latest frame to queue
+                    # Store image and timestamp in queue
+                    timestamp = datetime.now().isoformat()
+                    frame_queue.put_nowait((rgb_image.copy(), timestamp))
                     last_queue_time = current_time
                 else:
                     # If queue is full, remove the old frame and add the new one
                     try:
                         frame_queue.get_nowait()
                         frame_queue.task_done()
-                        frame_queue.put_nowait(rgb_image.copy())
+                        timestamp = datetime.now().isoformat()
+                        frame_queue.put_nowait((rgb_image.copy(), timestamp))
                         last_queue_time = current_time
                     except:
                         pass  # Queue might be empty due to concurrent access
