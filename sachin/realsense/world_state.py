@@ -27,15 +27,16 @@ world_state = {
     "description": None
 }
 
-# JSON file for storing world state
-WORLD_STATE_FILE = "world_state.json"
+# JSON Lines file for storing world state (append mode)
+WORLD_STATE_FILE = "world_state.jsonl"
 
-# Function to save world state to JSON file
+# Function to save world state to JSON Lines file (append mode)
 def save_world_state():
     try:
-        with open(WORLD_STATE_FILE, 'w') as f:
-            json.dump(world_state, f, indent=4)
-        print(f"World state saved to {WORLD_STATE_FILE}")
+        with open(WORLD_STATE_FILE, 'a') as f:
+            json.dump(world_state, f)
+            f.write('\n')  # Add newline to separate JSON objects
+        print(f"World state appended to {WORLD_STATE_FILE}")
     except Exception as e:
         print(f"Error saving world state: {e}")
 
