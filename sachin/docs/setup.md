@@ -6,7 +6,6 @@ Inference Setup
 
 - Start VLLm container
   - sudo docker run --runtime nvidia -it --rm -p 8000:8000 slabstech/dwani-vllm
-  - vllm serve google/gemma-3-4b-it     --served-model-name gemma3     --host 0.0.0.0     --port 8000     --gpu-memory-utilization 0.9     --tensor-parallel-size 1     --max-model-len 16384     --dtype bfloat16 
 
 - vllm serve google/gemma-3-4b-it \
   --served-model-name gemma3 \
@@ -32,8 +31,6 @@ vllm serve Qwen/Qwen2.5-VL-7B-Instruct \
     --trust-remote-code
 
 
-export DWANI_API_BASE_URL_VISION=http://127.0.0.1:8000
-
 
 https://github.com/dwani-ai/docs-indic-server.git
 
@@ -49,6 +46,9 @@ python src/server/robot_api.py --host 0.0.0.0 --port 7861
 
 
 
+export DWANI_API_BASE_URL_VISION=http://127.0.0.1:7861
+
+export DWANI_API_BASE_URL_LLM=http://127.0.0.1:7861
 
 https://github.com/dwani-ai/dwani-api-server.git
 
@@ -68,6 +68,9 @@ python src/server/robot.py --host 0.0.0.0 --port 8888
 
 
 <!-- 
+
+  - vllm serve google/gemma-3-4b-it     --served-model-name gemma3     --host 0.0.0.0     --port 8000     --gpu-memory-utilization 0.9     --tensor-parallel-size 1     --max-model-len 16384     --dtype bfloat16 
+
  ./build/bin/llama-server   --model hf_models/gemma-3-27b-it-q4_0.gguf  --mmproj hf_models/mmproj-model-f16-27B.gguf  --host 0.0.0.0   --port 7890   --n-gpu-layers 100   --threads 4   --ctx-size 4096   --batch-size 256
 
 
