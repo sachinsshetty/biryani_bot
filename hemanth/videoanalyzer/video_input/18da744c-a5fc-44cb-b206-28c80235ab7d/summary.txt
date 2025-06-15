@@ -1,0 +1,395 @@
+### Main Events and Actions Observed
+
+1. **Preparation of Ingredients**:
+   - A pot is placed on a stove.
+   - Water, salt, and dried oregano are added to the pot.
+   - The pot is heated on the stove.
+
+2. **Cooking Process**:
+   - Pasta is cooked in the boiling water.
+   - The pasta is stirred with a spoon.
+   - Chili oil and other ingredients are added to the pasta.
+
+3. **Final Presentation**:
+   - The cooked pasta is transferred to a serving bowl.
+   - The dish is garnished and presented.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation of Ingredients**:
+   - **Action 1**: Place a pot on the stove.
+   - **Action 2**: Add water to the pot.
+   - **Action 3**: Add salt to the water.
+   - **Action 4**: Add dried oregano to the water.
+  
+### Main Events and Actions Observed
+
+1. **Preparation of Water with Oregano**:
+   - A pot of water is placed on a stove.
+   - Salt and dried oregano are added to the water.
+   - The water is brought to a boil.
+
+2. **Peeling and Cutting Onion**:
+   - A person is shown peeling an onion.
+   - The peeled onion is placed on a cutting board.
+   - The onion is cut into smaller pieces using a knife.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation of Water with Oregano**:
+   - **Step 1**: Retrieve a pot and place it on the stove.
+   - **Step 2**: Measure and add salt to the pot.
+   - **Step 3**: Measure and add 1 teaspoon of dried oregano to the pot.
+   - **Step 4**: Pour water into the pot until it reaches the desired level.
+
+### Main Events and Actions Observed
+
+1. **Preparation**: A person is seen preparing to chop ingredients on a wooden cutting board.
+2. **Chopping Onion**: The person holds a knife in one hand and an onion in the other, carefully chopping the onion into small pieces.
+3. **Chopping Garlic**: The person then moves on to chopping garlic cloves in a similar manner.
+4. **Finely Chopped Ingredients**: The final result shows finely chopped onion and garlic pieces on the cutting board.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Setup**:
+   - **Action**: Move to the kitchen counter.
+   - **Tools**: Obtain a cutting board, a sharp knife, an onion, and garlic cloves.
+   - **Safety**: Ensure the knife is sharp and the cutting board is stable.
+
+2. **Chopping Onion**:
+   - **Action**: Place the onion on the cutting board.
+   -
+### Main Events and Actions Observed
+
+1. **Initial Setup**: A person is seen holding a knife and a cutting board.
+2. **Chopping Onion**: The person begins to finely chop a medium-sized onion.
+3. **Chopping Garlic**: After chopping the onion, the person proceeds to finely chop two cloves of garlic.
+4. **Continuous Chopping**: The person continues to chop the ingredients, ensuring they are finely diced.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Setup Phase**
+   - **Action**: Grasp the knife securely with the robotic hand.
+   - **Action**: Position the cutting board on a stable surface.
+
+2. **Chopping Onion**
+   - **Action**: Place the onion on the cutting board.
+   - **Action**: Move the knife in a rocking motion to finely chop the onion.
+   - **Action**: Ensure the pieces are uniformly small.
+
+3. **Chopping Garlic**
+  
+### Description of Events and Actions
+
+1. **Adding Pasta to Boiling Water**:
+   - A person is shown holding a bundle of uncooked pasta and adding it to a pot of boiling water.
+   - The pasta is being added in two portions.
+   - The pot is placed on a stove, and the water is visibly boiling.
+
+2. **Heating Olive Oil**:
+   - A stainless steel pan is placed on a stove.
+   - The stove is set to medium-low heat.
+   - Approximately 3 tablespoons of extra virgin olive oil are added to the pan.
+   - The oil begins to heat up, and small bubbles start to form on the surface.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation of Pasta**:
+   - **Step 1**: Identify the pot and stove in the kitchen environment.
+   - **Step 2**: Locate the uncooked pasta and ensure it is in manageable portions.
+  
+### Description of Events and Actions
+
+1. **Initial Setup**: A stainless steel pan is placed on a stove.
+2. **Heating Oil**: The stove is set to medium-low heat, and 3 tablespoons of extra virgin olive oil are added to the pan.
+3. **Pouring Oil**: The oil is poured into the pan, creating a small pool at the bottom.
+4. **Onion Addition**: Finely chopped onions are added to the pan with the oil.
+5. **Frying Onions**: The onions are fried in the oil until they turn golden brown.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Frying Onions",
+  "steps": [
+    {
+      "action": "Setup",
+      "description": "Place a stainless steel pan on the stove."
+    },
+    {
+      "action": "SetHeat",
+      "parameters": {
+        "heatLevel": "medium-low"
+      },
+
+### Description of Events and Actions
+
+The video segment shows a cooking process where finely chopped onions are being sautéed in a pan. The sequence of actions includes:
+1. Adding finely chopped onions to a pan with oil.
+2. Stirring the onions with a wooden spoon.
+3. Continuing to stir and cook the onions until they turn golden brown.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Sautéing Finely Chopped Onions",
+  "steps": [
+    {
+      "action": "AddOnions",
+      "description": "Add finely chopped onions to the pan with oil."
+    },
+    {
+      "action": "StirOnions",
+      "description": "Stir the onions with a wooden spoon to ensure even cooking.",
+      "parameters": {
+        "stir_interval": "every_30_seconds",
+        "stir_duration": "10_seconds"
+      }
+    },
+    {
+
+### Description of Events and Actions
+
+The video segment shows a cooking process where onions are being sautéed in a pan. The onions are finely chopped and appear to be cooking in oil. A spatula is used to stir the onions frequently to prevent them from burning. The visuals and text overlay emphasize the importance of stirring the onions to ensure even cooking and to prevent burning.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase:**
+   - **Action:** Identify and locate the necessary ingredients (onions and oil).
+   - **Action:** Ensure the cooking pan is clean and ready for use.
+   - **Action:** Obtain a spatula for stirring.
+
+2. **Cooking Phase:**
+   - **Action:** Place the pan on the stove and set the heat to a medium-low setting.
+   - **Action:** Pour a suitable amount of oil into the pan.
+   - **Action:** Add the finely chopped onions to the pan.
+   -
+### Main Events and Actions Observed
+
+1. **Preparation of Ingredients**:
+   - Minced garlic is added to a pan.
+   - Onions are being sautéed in the pan.
+
+2. **Cooking Process**:
+   - The garlic and onions are fried for 30 seconds.
+   - The onions are stirred frequently to prevent burning.
+
+3. **Visual Cues**:
+   - The garlic and onions change color as they cook.
+   - The pan is used to stir the ingredients.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Garlic and Onion Sauté",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Prepare ingredients",
+      "description": "Minced garlic and onions are ready to be cooked."
+    },
+    {
+      "step_number": 2,
+      "action": "Add garlic to pan",
+      "description": "Add the min
+### Description of Events and Actions
+
+The video segment shows a cooking process where red chili flakes are added to a pan containing sautéed ingredients, likely garlic and possibly other aromatics. The pan is on a stove, and a wooden spatula is used to stir the mixture. The text overlay indicates that 1 teaspoon of red chili flakes is added and the mixture is fried for 30 seconds. The sequence of actions includes:
+
+1. Adding red chili flakes to the pan.
+2. Stirring the mixture with a wooden spatula.
+3. Cooking the mixture for 30 seconds.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Spicy Garlic Cooking",
+  "steps": [
+    {
+      "action": "Heat the pan",
+      "description": "Preheat the pan on the stove over medium heat."
+    },
+    {
+      "action": "Add aromatics",
+
+### Description of Events and Actions
+
+1. **Preparation of Chili Onion Crisp**:
+   - A spoonful of chili onion crisp is shown being set aside for garnish.
+   - The crisp is placed in a small bowl or dish.
+
+2. **Cooking Pasta**:
+   - A pan is shown with cooked pasta being added to it.
+   - Approximately 1/2 cup of pasta water is added to the pan with the pasta.
+   - The pasta is stirred with a wooden spoon to mix it with the pasta water.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Cooking Pasta with Chili Onion Crisp",
+  "steps": [
+    {
+      "step": 1,
+      "action": "Prepare Chili Onion Crisp",
+      "description": "Set aside 2 tsp of chili onion crisp for garnish.",
+      "details": {
+        "tool": "spoon
+### Description of Events and Actions
+
+The video segment shows the process of cooking pasta in a pan. Initially, cooked pasta is added to the pan along with some pasta water. The pasta is stirred continuously with a wooden spoon. As the pasta cooks, the sauce thickens and becomes glossy. The process involves constant stirring to ensure even cooking and to achieve the desired consistency of the sauce.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Action**: Retrieve the necessary ingredients and utensils (cooked pasta, pasta water, wooden spoon, pan).
+   - **Description**: Ensure all required items are available for the cooking process.
+
+2. **Cooking Phase**
+   - **Action**: Place the cooked pasta into the pan.
+   - **Description**: Transfer the cooked pasta from the pot to the pan.
+
+   - **Action**: Add 1/2 cup of pasta water to the pan.
+   - **Description**: Pour the
+### Description of Events and Actions
+
+The video segment shows the process of cooking pasta in a sauce. The key actions include:
+1. Stirring the pasta and sauce mixture in a pan.
+2. Continuously stirring until the sauce thickens and becomes glossy.
+3. Adding pasta water to the mixture if the sauce becomes too dry.
+4. Repeating the stirring and adding pasta water process until the desired consistency is achieved.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Initialize Cooking Environment**
+   - Place the pan on the stove.
+   - Set the stove to medium heat.
+   - Add pasta and sauce to the pan.
+
+2. **Stirring Process**
+   - **Action:** Stir the pasta and sauce mixture using a spatula.
+   - **Frequency:** Every 30 seconds.
+   - **Duration:** Until the sauce thickens and becomes glossy.
+
+3. **Monitoring Sauce Consistency**
+   - **Action:** Check the
+### Description of Events and Actions
+
+The video segment shows the preparation of a pasta dish. The main actions include:
+
+1. **Cooking Pasta**: The pasta is being cooked in a pan with a sauce.
+2. **Stirring**: The pasta is stirred with a spatula to ensure even cooking and to prevent sticking.
+3. **Adding Water**: If the sauce becomes too dry, pasta water is added to maintain the desired consistency.
+4. **Garnishing**: Fresh parsley is added as a garnish to enhance the flavor and presentation of the dish.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Pasta Dish",
+  "steps": [
+    {
+      "action": "Cook Pasta",
+      "description": "Cook the pasta in a pan with the sauce.",
+      "tools": ["pan", "stove", "pasta", "sauce"]
+    },
+    {
+      "action":
+### Main Events and Actions Observed
+
+1. **Cooking Process**:
+   - The image shows a pan with cooked noodles being stirred with a spatula.
+   - The noodles are garnished with fresh parsley.
+
+2. **Presentation**:
+   - A bowl is placed on a woven mat.
+   - The cooked noodles are transferred from the pan to the bowl.
+
+3. **Garnishing**:
+   - A yellow spoon is used to garnish the noodles with a sauce or seasoning.
+
+4. **Final Presentation**:
+   - The noodles are presented in the bowl, ready to be served.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Cooking Process**:
+   - **Action**: Use a spatula to stir the noodles in the pan.
+   - **Parameter**: Ensure the noodles are evenly coated with the sauce.
+
+2. **Presentation**:
+   - **Action**: Place a bowl on a woven mat.
+   - **Parameter
+### Description of Events and Actions
+
+The video segment shows the process of serving a dish, likely a type of pasta, onto a plate. The main actions observed include:
+
+1. **Pouring the pasta**: The pasta is being transferred from a cooking vessel (such as a pot or pan) into a serving dish.
+2. **Plating the pasta**: The pasta is carefully arranged on the plate to ensure it looks visually appealing.
+3. **Adding garnish**: A garnish, possibly chili onion crisp, is added to the plated pasta to enhance its flavor and presentation.
+4. **Final touch**: The dish is ready to be served, with the pasta and garnish neatly presented.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Identify Ingredients and Utensils**:
+   - Ensure the pasta is cooked and ready to be served.
+   - Have a serving dish or plate ready.
+   - Prepare any garnishes, such as chili onion crisp.
+
+
+### Description of Events and Actions
+
+The video segment shows a close-up of a dish being prepared and plated. The main ingredients include pasta and a garnish made with reserved chili onion crisp. The pasta appears to be cooked and tossed with a sauce, then carefully arranged in a bowl. The garnish is sprinkled on top of the pasta, adding a final touch to the dish.
+
+### Action Policy for Lerobot Framework
+
+1. **Ingredient Preparation:**
+   - **Step 1:** Gather the necessary ingredients, including pasta, sauce, and chili onion crisp.
+   - **Step 2:** Cook the pasta according to the recipe instructions.
+
+2. **Sauce Preparation:**
+   - **Step 3:** Prepare the sauce as per the recipe. This may involve combining various ingredients and heating them together.
+
+3. **Tossing Pasta:**
+   - **Step 4:** Once the pasta is cooked and drained, transfer it to a mixing bowl.
+   - **
+### Main Events and Actions Observed
+
+1. **Preparation of Dish**: The video shows a bowl of pasta garnished with various toppings.
+2. **Cheese Grating**: Cheese is being grated over the pasta.
+3. **Final Presentation**: The dish is presented with a suggestion to add more cheese.
+4. **Eating the Dish**: A person is seen eating the pasta with a fork.
+5. **Call to Action**: The video ends with a message encouraging viewers to subscribe for more recipes.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation of Dish**:
+   - **Action**: Identify and gather ingredients for the dish (pasta, sauce, toppings).
+   - **Tool**: Use a cooking utensil to mix and prepare the pasta.
+   - **Location**: Place the prepared pasta in a serving bowl.
+
+2. **Cheese Grating**:
+   - **Action**: Grate cheese over the
+### Main Events and Actions Observed:
+
+1. **Introduction and Setup**:
+   - The video starts with a person standing near a table.
+   - The person is wearing a brown shirt with buttons.
+
+2. **Food Preparation**:
+   - The person is holding a bowl filled with a dish that appears to be pasta or noodles mixed with a sauce and possibly some vegetables.
+   - The person is in the process of serving or presenting the dish.
+
+3. **Closing Message**:
+   - At the bottom of the screen, there is a text overlay that says, "Thank you for watching! Please subscribe for more easy recipes."
+   - There is a small red heart icon next to the text.
+
+### Corresponding Action Policy for Lerobot Framework:
+
+1. **Setup Phase**:
+   - **Action 1**: Move to the kitchen area.
+   - **Action 2**: Ensure the table is clean and ready for food preparation.
+   - **Action 3**: Wear an appropriate outfit (

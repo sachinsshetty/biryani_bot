@@ -15,8 +15,8 @@ app = FastAPI(title="Video Analyzer")
 
 class VideoAnalysisRequest(BaseModel):
     youtube_url: str = "https://www.youtube.com/watch?v=95BCU1n268w"
-    interval_sec: Optional[int] = 1
-    batch_size: Optional[int] = 10
+    interval_sec: Optional[int] = 5
+    batch_size: Optional[int] = 6
     max_new_tokens: Optional[int] = 200
 
 def save_to_file(filename, data):
@@ -28,7 +28,7 @@ def analyze_video_local(request: VideoAnalysisRequest):
     session_id = str(uuid.uuid4())
     #workdir = f"tmp_{session_id}"
     #replace with env
-    workdir = Path(settings.VIDEO_INPUT_PATH)
+    workdir = Path(settings.VIDEO_INPUT_PATH).joinpath(session_id)
     os.makedirs(workdir, exist_ok=True)
     video_path = os.path.join(workdir, "video.mp4")
     frames_dir = os.path.join(workdir, "frames")
@@ -45,8 +45,6 @@ def analyze_video_local(request: VideoAnalysisRequest):
 
         summaries = []
         for i in range(0, len(frame_paths), request.batch_size):
-            if i == 2:
-                break
             batch = frame_paths[i:i+request.batch_size]
             user_content = []
             for f in batch:
@@ -77,7 +75,25 @@ def analyze_video_local(request: VideoAnalysisRequest):
             summaries.append(summary)
 
         full_summary = "\n".join(summaries)
-        return {"summary": full_summary}
+        sf_path = os.path.join(workdir, "summary.txt")
+        save_to_file(sf_path,full_summary)
+        #convert whole summaries to vla input
+        prompt = f"Summarize the following context as concisely as possible, capturing only the essential information and main points. Remove all unnecessary details, examples, or subplots. Present the summary in a format suitable for smolvla input—extremely brief, focused, and clear. Context:[{full_summary}]"
+        messages2 = [
+                {
+                    "role": "system",
+                    "content": [{"type": "text", "text": "You are a helpful assistant."}]
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]  
+        action_tasks = aiclient.call_ai(messages2)
+        print(f"action_tasks = {action_tasks}")
+        at_path = os.path.join(workdir, "actiontasks.txt")
+        save_to_file(at_path,action_tasks)
+        return {"Summary": full_summary, "Action Task": action_tasks}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -131,7 +147,7 @@ def analyze_video_cloud(request: VideoAnalysisRequest):
                 }
             ]
             #print(f"messages: {messages}")
-            summary = aiclient.call_dwani_chat_raw(messages)
+            summary = aiclient.call_ai_cloud(messages,settings.AI_CLOUD_API_VISION_MODEL_NAME)
             #print(f"messages: {summary}")
             summaries.append(summary)
 
@@ -140,10 +156,25 @@ def analyze_video_cloud(request: VideoAnalysisRequest):
         sf_path = os.path.join(workdir, "summary.txt")
         save_to_file(sf_path,full_summary)
         #convert whole summaries to vla input
-        prompt = f"Summarize the following context as concisely as possible, capturing only the essential information and main points. Remove all unnecessary details, examples, or subplots. Present the summary in a format suitable for smolvla input—extremely brief, focused, and clear. Context:[{full_summary}]"
-        action_tasks = aiclient.call_dwani_chat_raw(prompt)
+        prompt = []
+        prompt.append({
+            "type": "text",
+            "text": f"From the provided full summary (Context:[{full_summary}]), list only the action policy tasks relevant to LeRobot in text format."
+        })
+        messages2 = [
+                {
+                    "role": "system",
+                    "content": [{"type": "text", "text": "You are a helpful assistant."}]
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]  
+        action_tasks = aiclient.call_ai_cloud(messages2,settings.AI_CLOUD_API_TEXT_MODEL_NAME)
         print(f"action_tasks = {action_tasks}")
-        at_path = os.path.join(workdir, "summary.txt")
+        at_path = os.path.join(workdir, "actiontasks.txt")
+
         save_to_file(at_path,action_tasks)
         return {"Summary": full_summary, "Action Task": action_tasks}
     except Exception as e:

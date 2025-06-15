@@ -1,0 +1,219 @@
+### Main Events and Actions Observed
+
+1. **Introduction Screen**:
+   - The video starts with a logo and text that reads "Spice Eats" and "youtube.com/spiceeats" with a prompt to like and subscribe.
+
+2. **Cooking Process**:
+   - The video shows a pot on a stove cooking a dish that appears to be biryani or a similar rice-based dish.
+   - Ingredients visible include rice, spices, vegetables, and meat.
+   - The rice is being cooked with spices and mixed with pieces of meat and vegetables.
+
+3. **Final Presentation**:
+   - The cooked dish is served in a white bowl, showing the final presentation of the dish.
+
+4. **Raw Ingredients**:
+   - The video ends with a close-up of raw chicken pieces in a container, indicating the starting ingredient for the dish.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Setup and Preparation**:
+   - **Action**: Load the
+### Description of Events and Actions
+
+1. **Initial Setup**: The first image shows an empty pan, indicating the beginning of the cooking process.
+2. **Adding Ingredients**: The second image shows sliced onions being added to the pan.
+3. **Cooking Onions**: The third and fourth images show the onions being fried in oil for 10-12 minutes on medium heat until they turn light brown.
+4. **Adding Ginger Garlic Paste**: The fifth image shows ginger garlic paste being added to the pan with the fried onions.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation**:
+   - **Action**: Place an empty pan on the stove.
+   - **Description**: Ensure the pan is clean and ready for cooking.
+
+2. **Adding Ingredients**:
+   - **Action**: Measure and slice the required amount of onions (5 medium onions).
+   - **Description**: Slice the onions into thin pieces and set them aside.
+
+3.
+### Description of Events and Actions
+
+1. **Image 1**: The first image shows a pan with some ingredients being fried on low heat. A wooden spatula is used to stir the contents.
+2. **Image 2**: The second image shows a close-up of the frying process, with the spatula stirring the ingredients in the pan.
+3. **Image 3**: The third image shows raw chicken pieces being added to the pan.
+4. **Image 4**: The fourth image shows the chicken pieces being fried on high heat, with the spatula stirring them.
+5. **Image 5**: The fifth image shows the chicken pieces being fried further, with the spatula continuing to stir them.
+6. **Image 6**: The sixth image shows the chicken pieces being cooked until they appear to be nearly done, with the spatula still in use.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation**:
+   - Ensure the pan is
+### Description of Events and Actions
+
+1. **Adding Biryani Masala**: The first step involves adding biryani masala to a pot containing chicken pieces. The masala is pre-made and requires no additional salt.
+2. **Mixing Ingredients**: A wooden spoon is used to mix the chicken and masala thoroughly.
+3. **Adding Water**: A small amount of water is added to the mixture.
+4. **Cooking**: The mixture is cooked on medium heat for approximately 3 minutes.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Chicken Biryani",
+  "steps": [
+    {
+      "step_number": 1,
+      "action": "Add_biryani_masala",
+      "parameters": {
+        "ingredient": "biryani masala",
+        "quantity": "5 tbsp",
+        "pot": "cooking_pot_with_chicken"
+      }
+    },
+
+### Description of Events and Actions
+
+1. **Initial Preparation**:
+   - A pan is filled with ingredients including meat and sliced tomatoes.
+   - The ingredients are mixed together.
+
+2. **Cooking Process**:
+   - The pan is placed on a stove, and the contents are cooked over low heat for 4 minutes.
+   - The mixture is stirred occasionally to ensure even cooking.
+
+3. **Adding Yogurt/Curd**:
+   - After cooking, a cup of yogurt or curd is added to the pan.
+   - The mixture is stirred thoroughly to combine the yogurt with the cooked ingredients.
+
+4. **Final Mixing**:
+   - The final mixture is given a thorough mix to ensure all ingredients are well integrated.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": {
+    "name": "Cooked Meat with Yogurt",
+    "ingredients": {
+      "meat": "1 lb",
+      "tomatoes":
+### Description of Events and Actions
+
+1. **Initial Preparation**:
+   - A pot is filled with a mixture of ingredients, including what appears to be meat and spices.
+   - A wooden spoon is used to stir the mixture.
+
+2. **Adding Herbs**:
+   - Fresh cilantro is added to the pot, enhancing the flavor and visual appeal of the dish.
+
+3. **Cooking Process**:
+   - The mixture is cooked over low heat for a few minutes, allowing the flavors to meld together.
+
+4. **Adding Green Chillies**:
+   - Green chillies are added to the pot, providing a spicy element to the dish.
+   - The chillies are added in a specific quantity, as indicated by the text overlay.
+
+5. **Final Stirring**:
+   - The mixture is stirred again to ensure even distribution of the added ingredients.
+
+### Action Policy for Lerobot Framework
+
+1. **Preparation**:
+   - **Action**: Place the pot on the stove
+### Description of Events and Actions
+
+1. **Cover and Cook**: The first image shows a pot with a lid on it, indicating that the contents should be covered and cooked for 20 minutes on low heat, stirring occasionally.
+2. **Stirring**: The second image shows a spoon stirring a mixture in a pot, suggesting that the contents need to be stirred.
+3. **Dry Up Water**: The third image shows the process of drying up excess water from the mixture using a spoon.
+4. **Boil Water**: The fourth image shows a pot with boiling water, with a note indicating 2.5 liters of water should be boiled.
+5. **Add Ingredients**: The fifth image shows the addition of ingredients, specifically "shahjeera" (caraway seeds) and possibly other spices, into the boiling water.
+6. **Mixing**: The sixth image shows the mixture being stirred with a spoon, indicating the combination of ingredients.
+
+### Corresponding
+### Description of Events and Actions
+
+1. **Boiling Basmati Rice**:
+   - Basmati rice (700 grams) is soaked for 30 minutes.
+   - The rice is added to a pot of boiling water.
+   - The rice is stirred occasionally with a spoon.
+
+2. **Cooking Process**:
+   - The rice is cooked until it is almost done (approximately 90% cooked).
+   - Half of the rice is arranged in a flat pan.
+
+3. **Adding Chicken**:
+   - Cooked chicken pieces are spread on top of the arranged rice in the pan.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Chicken and Rice Dish",
+  "steps": [
+    {
+      "step": 1,
+      "action": "Soak basmati rice (700 grams) for 30 minutes"
+    },
+    {
+      "step": 2,
+     
+### Description of Events and Actions
+
+1. **Preparation of Chicken Curry**: The video shows a pot with cooked chicken curry being prepared. The chicken is cooked with various spices and vegetables.
+2. **Layering Rice**: White rice is layered on top of the chicken curry in the pot. The rice is spread evenly to cover the chicken completely.
+3. **Adding Garnish**: Fresh herbs, possibly cilantro, are sprinkled on top of the layered rice as a garnish.
+
+### Action Policy for Lerobot Framework
+
+1. **Preparation of Chicken Curry**:
+   - **Step 1**: Heat the cooking pot over medium heat.
+   - **Step 2**: Add oil to the pot.
+   - **Step 3**: Add spices (e.g., turmeric, cumin, coriander) and sauté briefly.
+   - **Step 4**: Add chicken pieces and cook until browned.
+   - **Step 5**: Add
+### Description of Events and Actions
+
+1. **Initial Preparation**:
+   - A pot is filled with white rice.
+   - Fresh green mint leaves are sprinkled on top of the rice.
+
+2. **Cooking Process**:
+   - The pot is covered with a lid.
+   - The rice is cooked for 7-8 minutes on low heat.
+
+3. **Mixing Ingredients**:
+   - Once cooked, the rice is mixed with pieces of chicken.
+   - The mixture is stirred thoroughly to ensure even distribution of the chicken pieces in the rice.
+
+4. **Final Preparation**:
+   - The final dish is presented with the rice and chicken evenly mixed together.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Chicken and Rice Dish",
+  "steps": [
+    {
+      "action": "fill_pot_with_rice",
+      "parameters": {
+        "pot": "large_pot",
+        "ingredient": "rice
+### Description of Events and Actions Observed
+
+1. **Introduction and Setup**:
+   - The video begins with a close-up shot of a pot containing a dish that appears to be biryani or a similar rice-based dish.
+   - The pot is placed on a stove, indicating that the dish is being cooked or kept warm.
+
+2. **Cooking Process**:
+   - The dish is shown being stirred, ensuring even cooking and distribution of ingredients.
+   - Various ingredients, including rice, meat, and spices, are visible within the dish.
+
+3. **Presentation**:
+   - The dish is then transferred to a serving bowl, which is placed on a table.
+   - The bowl is filled with the cooked rice and meat mixture, garnished with herbs or spices.
+
+4. **Subscribing and Social Media Engagement**:
+   - A prompt appears on the screen asking viewers to subscribe to a channel named "Spice Eats."
+   - Social media icons for Facebook, Instagram, and Twitter

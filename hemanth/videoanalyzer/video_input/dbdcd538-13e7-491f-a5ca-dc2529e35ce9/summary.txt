@@ -1,0 +1,981 @@
+### Description of Events and Actions
+
+The video segment appears to be an introductory sequence for a YouTube channel named "Spice Eats." The sequence includes several visual elements:
+
+1. **Opening Frame**: A white screen with no visible elements.
+2. **Circular Designs**: A series of circular and spiral designs in yellow and orange colors.
+3. **Sun and Planets**: An image of a large yellow sun with two smaller yellow planets on either side.
+4. **Logo Introduction**: The "Spice Eats" logo appears in the center of the screen, surrounded by yellow rays resembling a sunburst.
+5. **Text Overlay**: The text "Spice Eats" is displayed prominently in the center.
+6. **Call to Action**: The text "youtube.com/spiceeats" and "PLEASE LIKE & SUBSCRIBE" appear at the bottom of the screen.
+
+### Corresponding Action Policy for Lerobot Framework
+
+To replicate these actions,
+### Description of Events and Actions
+
+The video segment shows the preparation and cooking of a dish, likely a type of biryani or rice-based dish, in a large pot on a stove. The sequence of actions includes:
+
+1. **Cooking the Rice**: The rice is being cooked in the pot, with visible steam indicating that it is being heated.
+2. **Mixing Ingredients**: Various ingredients, including spices, vegetables, and possibly meat, are added to the pot and mixed with the rice.
+3. **Stirring**: The contents of the pot are stirred with a spoon to ensure even cooking and distribution of ingredients.
+4. **Covering and Simmering**: The pot is covered, and the dish is allowed to simmer, indicating that it is being cooked slowly over low heat.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Step 1**: Place the pot on the stove and turn on the heat
+### Description of Events and Actions
+
+The video segment shows the preparation and cooking of a dish that appears to be a type of biryani or pilaf. The main events and actions observed include:
+
+1. **Cooking the Rice**: Rice is being cooked in a large pot.
+2. **Adding Ingredients**: Various ingredients such as spices, vegetables, and possibly meat are added to the pot.
+3. **Mixing**: The contents of the pot are mixed thoroughly to ensure even distribution of ingredients.
+4. **Cooking Process**: The mixture is cooked over a stove, with occasional stirring to prevent burning and ensure even cooking.
+5. **Final Touches**: The dish is garnished and ready to be served.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Step 1**: Identify and gather all necessary ingredients (rice, spices, vegetables, meat, etc.).
+   - **Step 2**: Measure and prepare each
+### Description of Events and Actions
+The video segment shows a sequence of steps to prepare a dish, likely a type of biryani or rice-based dish with meat and spices. The main events and actions observed are:
+
+1. **Preparation of Ingredients**: Various ingredients such as rice, meat, spices, and vegetables are prepared.
+2. **Cooking Process**: The ingredients are cooked together in a pot or pan, with spices and seasonings added.
+3. **Mixing**: The cooked rice and meat are mixed together thoroughly.
+4. **Serving**: The final dish is served in a bowl, ready to be eaten.
+
+### Corresponding Action Policy for Lerobot Framework
+The following action policy outlines the steps a robot should follow to replicate the observed cooking process:
+
+1. **Ingredient Preparation**:
+   - **Action 1**: Identify and gather all necessary ingredients (rice, meat, spices, vegetables).
+   - **Action 2**: Wash and clean the ingredients as
+### Description of Events and Actions
+
+1. **Introduction to Ingredients**:
+   - The video shows a close-up of a dish containing rice mixed with vegetables and pieces of chicken.
+   - The next sequence shows raw chicken pieces in a container, labeled as "1 kg chicken, large pieces with bones."
+
+2. **Preparation**:
+   - The chicken pieces are placed in a container, ready for cooking.
+   - The video emphasizes the importance of using large pieces of chicken with bones for the recipe.
+
+3. **Cooking Process**:
+   - The chicken pieces are likely to be cooked as part of a dish, possibly a rice-based dish given the initial image.
+   - The video suggests that the chicken is a key ingredient in the dish being prepared.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Ingredient Identification**:
+   - **Action**: Use a camera to capture images of the ingredients.
+   - **Input**: Image of the dish with rice, vegetables, and chicken
+### Description of Events and Actions
+
+1. **Initial Setup**: The video shows an empty pan on a stove.
+2. **Heating Oil**: Oil is poured into the pan, and the stove is turned on to heat the oil.
+3. **Adding Ingredient**: A white substance (possibly flour or a batter) is added to the heated oil.
+4. **Cooking Process**: The mixture begins to cook, creating bubbles and sizzling sounds.
+5. **Adding Onion**: Sliced onions are added to the mixture, and the cooking process continues.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Cooking Process",
+  "steps": [
+    {
+      "action": "Setup",
+      "description": "Place an empty pan on the stove."
+    },
+    {
+      "action": "Heat Oil",
+      "description": "Pour 5-6 tablespoons of oil into the pan.",
+      "parameters
+### Description of Events and Actions
+
+The video segment shows the process of frying sliced onions in a pan. The sequence of actions includes:
+1. Placing sliced onions into a pan.
+2. Stirring the onions occasionally with a spatula.
+3. Cooking the onions on medium heat for approximately 10-12 minutes.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Frying Sliced Onions",
+  "ingredients": {
+    "sliced onion": "5 medium"
+  },
+  "instructions": [
+    {
+      "action": "Place sliced onions into a pan",
+      "description": "Ensure the pan is on a stove and preheated to medium heat."
+    },
+    {
+      "action": "Stir onions occasionally",
+      "description": "Use a spatula to stir the onions every few minutes to ensure even cooking.",
+      "interval": "every 2-
+### Description of Events and Actions
+
+The video segment shows the process of frying sliced onions in a pan. The onions are being cooked on medium heat for 10-12 minutes. The sequence of images shows the onions being stirred occasionally to ensure even cooking. The final image indicates that the onions have been fried until they are light brown.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Action 1:** Place a pan on the stove.
+   - **Action 2:** Set the stove to medium heat.
+   - **Action 3:** Add a suitable amount of oil to the pan.
+   - **Action 4:** Wait until the oil is heated to the appropriate temperature.
+
+2. **Cooking Phase**
+   - **Action 5:** Add sliced onions to the pan.
+   - **Action 6:** Stir the onions gently to coat them with oil.
+   - **Action 7:** Set a timer for
+### Description of Events and Actions
+
+The video segment depicts the process of frying a food item until it turns light brown. The food appears to be thinly sliced and is being fried in a pan with oil. A yellow spatula is used to stir and flip the food to ensure even cooking. Once the food reaches a light brown color, ginger garlic paste is added to the pan. The paste is stirred into the fried food, likely to enhance the flavor.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Step 1:** Place the necessary ingredients and tools on the workspace. This includes the food to be fried, a pan, oil, a spatula, and ginger garlic paste.
+   - **Step 2:** Ensure the pan is clean and ready for use.
+
+2. **Frying Phase**
+   - **Step 3:** Pour an appropriate amount of oil into the pan and heat it to the desired temperature.
+   -
+### Description of Events and Actions
+
+1. **Introduction of Ingredients**:
+   - A wok or pan is shown with some ingredients already in it, possibly including meat and onions.
+   - A spoonful of ginger garlic paste is added to the wok.
+
+2. **Mixing**:
+   - The ginger garlic paste is mixed into the other ingredients using a spatula or spoon.
+
+3. **Cooking Process**:
+   - The mixture is cooked over low heat for a few minutes.
+   - The spatula or spoon is used to stir the mixture continuously.
+
+4. **Final Steps**:
+   - The cooking process is shown to be complete after a couple of minutes.
+   - The final dish appears to be ready.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation**:
+   - **Action**: Load the wok or pan with the initial ingredients (e.g., meat and onions).
+   - **Action**: Measure and prepare 2 tablespoons of ginger
+### Description of Events and Actions
+
+The video segment shows a cooking process where an ingredient, likely meat or a similar food item, is being fried in a pan. The pan is placed on a stove, and the heat is set to low. A wooden spatula is used to stir and flip the food to ensure even cooking. The food appears to be in the process of browning and becoming crispy. The text overlay indicates that the food should be fried for 2 minutes on low heat.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase:**
+   - Ensure the cooking area is clean and all necessary tools are available, including a pan, stove, spatula, and the ingredient to be fried.
+   - Set the stove to low heat.
+
+2. **Placement Phase:**
+   - Place the ingredient in the pan. Ensure the ingredient is evenly distributed to facilitate even cooking.
+
+3. **Cooking Phase:**
+   - Start a timer for 2
+### Description of Events and Actions
+
+The video segment shows the process of cooking chicken pieces in a pot. The sequence of actions includes:
+
+1. **Initial State**: A pot containing some oil and possibly sautéed onions or aromatics.
+2. **Adding Chicken Pieces**: Raw chicken pieces are added to the pot.
+3. **Mixing**: The chicken pieces are stirred and mixed with the contents of the pot.
+4. **Cooking**: The chicken pieces are cooked in the pot, likely being stirred occasionally to ensure even cooking.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation**:
+   - Ensure the pot is clean and ready for cooking.
+   - Place the pot on a heat source and set it to medium heat.
+   - Add a suitable amount of oil to the pot.
+
+2. **Sautéing Aromatics**:
+   - Add onions or other aromatics to the pot.
+   - Stir the onions until they become translucent and slightly
+### Description of Events and Actions
+
+The video segment shows the process of frying chicken pieces in a pan. The sequence of actions includes:
+1. Placing raw chicken pieces into a pan.
+2. Stirring the chicken pieces with a spatula.
+3. Cooking the chicken pieces over high heat.
+4. Continuing to stir the chicken pieces occasionally.
+5. Frying the chicken pieces for approximately 2-3 minutes.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Frying Chicken Pieces",
+  "steps": [
+    {
+      "action": "Place raw chicken pieces into a pan",
+      "description": "Ensure the pan is suitable for high-heat cooking. Add the raw chicken pieces to the pan."
+    },
+    {
+      "action": "Stir chicken pieces with a spatula",
+      "description": "Use a spatula to stir the chicken pieces to ensure even cooking and prevent sticking."
+
+### Description of Events and Actions
+
+The video segment shows the process of frying meat in a pan. The meat appears to be cut into small pieces and is being cooked on high heat. The cooking process involves stirring the meat occasionally to ensure even cooking. The visual instructions indicate that the meat should be fried for 2-3 minutes on high heat.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase:**
+   - **Step 1:** Ensure the cooking pan is clean and ready for use.
+   - **Step 2:** Place the pan on the stove and turn on the heat to high.
+   - **Step 3:** Add a suitable amount of cooking oil to the pan to prevent the meat from sticking.
+
+2. **Cooking Phase:**
+   - **Step 4:** Add the meat pieces to the pan. Ensure the pieces are evenly distributed.
+   - **Step 5:** Begin the timer for 2-3 minutes.
+   -
+### Description of Events and Actions
+
+1. **Initial Preparation**:
+   - Raw chicken pieces are placed in a cooking pot.
+   - A cooking utensil (spatula) is used to stir the chicken pieces.
+
+2. **Cooking Process**:
+   - The chicken is fried on high heat for 2-3 minutes.
+   - A ready-made biryani masala (5 tablespoons) is added to the pot.
+   - The mixture is stirred thoroughly to ensure even distribution of the masala.
+
+3. **Final Cooking**:
+   - The chicken and masala mixture is cooked further, with continuous stirring to prevent burning.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Chicken Biryani",
+  "steps": [
+    {
+      "action": "Place raw chicken pieces in the pot",
+      "description": "Use the gripper to pick up raw chicken pieces and place them in the cooking pot."
+
+### Description of Events and Actions
+
+1. **Introduction of Ingredients**:
+   - The video shows a cooking pot containing pieces of chicken.
+   - A spice mixture, identified as "biryani masala," is being added to the chicken.
+
+2. **Mixing Process**:
+   - A wooden spoon is used to mix the chicken and the biryani masala thoroughly.
+   - The mixture is stirred to ensure even distribution of the spices.
+
+3. **Cooking Process**:
+   - The chicken is cooked in the pot, with the biryani masala providing flavor.
+   - The video emphasizes that no additional salt is required as the biryani masala already contains salt.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Chicken Biryani",
+  "ingredients": {
+    "chicken": "5 lbs",
+    "biryani masala": "5 tbsp"
+  },
+  "instructions
+### Description of Events and Actions
+
+1. **Cooking Process**:
+   - The first few frames show chicken pieces being cooked in a pan with spices. A wooden spoon is used to stir the chicken.
+   - The text overlay indicates that no additional salt is required because the biryani masala already contains salt.
+
+2. **Adding Water**:
+   - The subsequent frames show water being poured into the pan with the chicken.
+   - The text overlay instructs to "add a splash of water."
+
+### Action Policy for Lerobot Framework
+
+1. **Preparation**:
+   - Ensure the cooking area is clean and all necessary ingredients and utensils are available.
+   - Place the pan on the stove and set it to medium heat.
+
+2. **Cooking the Chicken**:
+   - Place the chicken pieces in the pan.
+   - Add the biryani masala to the chicken.
+   - Use a wooden spoon to stir the chicken and masala mixture continuously until the chicken is
+### Description of Events and Actions
+
+The video segment depicts a cooking process involving chicken pieces being fried in a pan. The main actions observed include:
+
+1. **Adding a splash of water**: Water is added to the pan containing the chicken.
+2. **Stirring the mixture**: A wooden spoon is used to stir the chicken and water mixture.
+3. **Frying for 3 minutes on medium heat**: The chicken is cooked on medium heat for 3 minutes.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**:
+   - Ensure the cooking pan is clean and ready.
+   - Place the chicken pieces in the pan.
+
+2. **Adding Water**:
+   - Identify the location of the water container.
+   - Pour a measured amount of water into the pan containing the chicken.
+   - Verify that the water has been added evenly across the chicken pieces.
+
+3. **Stirring the Mixture**:
+   - Identify the location of the wooden
+### Description of Events and Actions
+
+The video segment shows the process of frying chicken pieces in a pan. The chicken is being cooked over medium heat for approximately 3 minutes. A wooden spatula is used to stir and flip the chicken pieces to ensure even cooking and browning. The chicken appears to be coated in a sauce or marinade, which caramelizes as it cooks. The visuals indicate that the chicken is being cooked in batches, with each batch being fried until it reaches a golden-brown color.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase:**
+   - **Step 1:** Ensure the cooking surface and utensils (pan and spatula) are clean and ready for use.
+   - **Step 2:** Prepare the chicken pieces by cutting them into uniform sizes and coating them with the desired sauce or marinade.
+
+2. **Cooking Phase:**
+   - **Step 3:** Place the pan on the stove and
+### Description of Events and Actions
+
+1. **Initial Preparation**:
+   - A pot is filled with meat and spices, indicating the beginning of cooking a dish.
+   - A wooden spoon is used to stir the mixture, ensuring even cooking and distribution of spices.
+
+2. **Adding Ingredients**:
+   - Sliced tomatoes are added to the pot. The tomatoes are fresh and appear to be medium-sized.
+   - The tomatoes are evenly distributed over the meat and spices, enhancing the flavor and visual appeal of the dish.
+
+3. **Cooking Process**:
+   - The mixture is stirred again to combine the tomatoes with the meat and spices.
+   - The pot is left on the stove, allowing the ingredients to cook together, integrating flavors and textures.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```python
+class CookingRobot:
+    def __init__(self, pot, spoon, stove):
+        self.pot = pot
+        self.spoon = spoon
+        self.st
+### Description of Events and Actions
+
+The video segment shows the preparation of a dish involving meat and vegetables. The main ingredients include sliced tomatoes, red bell peppers, and possibly ginger and garlic. The sequence of actions includes:
+
+1. **Preparation**: Ingredients are prepared and sliced.
+2. **Cooking**: Ingredients are added to a pan and cooked together.
+3. **Stirring**: The contents of the pan are stirred to ensure even cooking.
+4. **Frying**: The mixture is fried on low heat for a specified duration (4 minutes).
+
+### Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Step 1**: Identify and gather the necessary ingredients (meat, tomatoes, red bell peppers, ginger, garlic).
+   - **Step 2**: Use cutting tools to slice the tomatoes and red bell peppers into desired sizes.
+   - **Step 3**: Peel and mince the ginger and garlic.
+
+2.
+### Description of Events and Actions
+
+The video segment shows a cooking process involving chicken and tomatoes. The main steps observed are:
+
+1. **Preparation**: Chicken pieces are placed in a pan.
+2. **Cooking**: The chicken is cooked with tomatoes and other ingredients.
+3. **Stirring**: The contents of the pan are stirred occasionally.
+4. **Frying**: The mixture is fried on low heat for 4 minutes.
+5. **Checking**: The tomatoes are checked for softness.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Action**: Move to the kitchen area.
+   - **Tool**: Use a cutting board and knife.
+   - **Procedure**: Cut the chicken into pieces and place them in a cooking pan.
+
+2. **Cooking Phase**
+   - **Action**: Move to the stove area.
+   - **Tool**: Use a cooking pan and stove.
+   - **Procedure**: Place the chicken pieces
+### Description of Events and Actions Observed
+
+The video segment shows the preparation of a dish involving chicken and tomatoes. The main steps observed include:
+1. **Cooking the Chicken**: Pieces of chicken are being cooked in a pan.
+2. **Adding Ingredients**: Various ingredients, including tomatoes, are added to the pan.
+3. **Stirring and Simmering**: The ingredients are stirred and simmered together until the tomatoes become soft.
+4. **Finalizing the Dish**: The dish is cooked until the chicken is tender and the tomatoes are well integrated into the sauce.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Initialize Cooking Environment**
+   - Ensure the cooking area is clean and all necessary utensils and ingredients are available.
+   - Preheat the cooking pan to medium heat.
+
+2. **Prepare Ingredients**
+   - Wash and cut the chicken into appropriate pieces.
+   - Prepare the tomatoes and other ingredients as required by the
+### Description of Events and Actions
+
+The video segment shows the process of adding yogurt or curd to a dish that appears to be a type of curry or stew. The dish is in a black pan, and the yogurt is being poured from a container. The yogurt is added in stages, with each pour spreading over the dish, creating a creamy layer on top of the curry.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase:**
+   - Ensure the robot has access to the necessary ingredients: a pan with the curry or stew, a container of yogurt or curd, and any cooking utensils required.
+   - Verify that the pan is placed on a stable surface and is at the correct temperature for adding the yogurt.
+
+2. **Ingredient Identification:**
+   - Use visual recognition software to identify the pan containing the curry and the container of yogurt.
+   - Confirm the quantity of yogurt to be added
+### Description of Events and Actions
+
+The video segment shows a sequence of steps involved in mixing ingredients in a bowl. The main actions include:
+
+1. **Initial Mixing**: A wooden spoon is used to mix ingredients in a bowl, which appear to be a combination of sauces, meats, and possibly vegetables.
+2. **Adding Ingredients**: Additional ingredients are added to the mixture, possibly including spices or other condiments.
+3. **Continuous Stirring**: The mixture is continuously stirred to ensure even distribution of the ingredients.
+4. **Final Mixing**: The final stages show a well-combined mixture, indicating thorough mixing.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Setup**:
+   - Ensure the bowl is placed on a stable surface.
+   - Load the necessary ingredients into the bowl.
+
+2. **Initial Mixing**:
+   - **Action**: Use the spoon attachment to begin mixing the ingredients in the bowl.
+   - **Parameters**: Set the
+### Description of Events and Actions
+
+1. **Initial Preparation (Image 1)**:
+   - A pot is filled with a mixture of ingredients, possibly including meat and vegetables, being cooked together.
+   - A wooden spoon is used to stir the mixture.
+
+2. **Adding Coriander (Images 2-6)**:
+   - Chopped coriander is added to the pot in multiple steps.
+   - The coriander is sprinkled over the mixture, enhancing the flavor and visual appeal of the dish.
+
+3. **Final Touches (Image 7)**:
+   - Additional chopped mint is added to the pot, further enhancing the flavor profile of the dish.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```yaml
+recipe:
+  name: "Cooking with Coriander and Mint"
+  steps:
+    - step: "Prepare the Ingredients"
+      actions:
+        - action: "Fill a pot with a mixture of meat and vegetables."
+       
+### Description of Events and Actions
+
+1. **Initial State**: A pot of food is shown, likely a curry or stew, with a rich, thick consistency.
+2. **Adding Ingredient**: Chopped mint leaves are being added to the pot.
+3. **Mixing**: A wooden spoon is used to mix the chopped mint into the food thoroughly.
+4. **Cooking**: The mixture is cooked on low heat for approximately two minutes.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": {
+    "name": "Mint Curry",
+    "steps": [
+      {
+        "step_number": 1,
+        "action": "Prepare the pot",
+        "description": "Ensure the pot is clean and suitable for cooking."
+      },
+      {
+        "step_number": 2,
+        "action": "Cook the base",
+        "description": "Cook the base ingredients of the curry or stew in the pot until
+### Description of Events and Actions
+
+The video segment shows a cooking process where a dish is being prepared in a pan. The dish appears to be a type of curry or stew with visible ingredients including meat and green herbs. The sequence of actions includes:
+
+1. **Cooking the Ingredients**: The pan contains a mixture of ingredients being cooked together.
+2. **Stirring the Mixture**: A spoon or spatula is used to stir the contents of the pan.
+3. **Adding Herbs**: Green herbs are added to the mixture.
+4. **Cooking on Low Heat**: The text overlay indicates that the dish should be cooked for 2 minutes on low heat.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**:
+   - **Load Ingredients**: Ensure that all necessary ingredients (meat, herbs, spices, etc.) are available and measured correctly.
+   - **Preheat the Pan**: Heat the cooking pan to a medium-high
+### Description of Events and Actions
+
+1. **Initial Preparation**:
+   - A pot is filled with a mixture of ingredients, including meat and vegetables, submerged in a sauce.
+   - The sauce appears to be a curry or stew with a rich, thick consistency.
+
+2. **Adding Green Chillies**:
+   - Green chillies are added to the pot. The text overlay indicates that six half-slit green chillies are added.
+
+3. **Stirring the Mixture**:
+   - A wooden spoon is used to stir the mixture thoroughly, ensuring that the chillies and other ingredients are well combined.
+
+### Action Policy for Lerobot Framework
+
+1. **Preparation Phase**:
+   - **Step 1**: Place the pot on a cooking surface.
+   - **Step 2**: Add the base ingredients (meat and vegetables) to the pot.
+   - **Step 3**: Pour the sauce over the ingredients, ensuring they are fully submerged.
+
+2. **Adding
+### Main Events and Actions Observed
+
+1. **Cooking Process**:
+   - A pot is being used to cook a dish containing green beans, chunks of meat, and possibly potatoes in a sauce.
+   - A wooden spoon is used to stir the contents of the pot.
+
+2. **Stirring**:
+   - The wooden spoon is moved in a circular motion to mix the ingredients thoroughly.
+   - The stirring action is continuous, ensuring even cooking and preventing the ingredients from sticking to the bottom of the pot.
+
+3. **Cooking Utensils**:
+   - The wooden spoon is the primary utensil used for stirring.
+   - The pot is placed on a stove, which is not visible but implied by the cooking process.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation**:
+   - **Step 1**: Place the pot on the stove.
+   - **Step 2**: Add the ingredients (green beans, meat, potatoes, and sauce
+### Main Events and Actions Observed:
+
+1. **Cover and Cook Instruction**:
+   - A pot with a lid is shown.
+   - Text overlay indicates to "cover & cook" for 20 minutes on low heat, stirring occasionally.
+
+2. **Lid Placement**:
+   - The lid is placed on the pot.
+   - The lid has a wooden knob.
+
+3. **Cooking Process**:
+   - The pot is left on the stove.
+   - The cooking process is shown with occasional stirring.
+
+4. **Final Result**:
+   - The food inside the pot is shown being stirred with a spoon.
+   - The food appears to be a stew or soup with visible ingredients like meat and vegetables.
+
+### Corresponding Action Policy for Lerobot Framework:
+
+1. **Preparation**:
+   - Ensure the pot is clean and ready for cooking.
+   - Place the necessary ingredients into the pot.
+
+2. **Covering the Pot**:
+   - Identify the lid that fits the
+### Description of Events and Actions
+
+The video segment shows a cooking process where a person is preparing a dish in a pot. The main actions observed include:
+
+1. **Stirring the Ingredients**: The person uses a wooden spoon to stir the contents of the pot, which include various ingredients such as meat and vegetables.
+2. **Cooking**: The pot is on a stove, and the contents are being cooked, as indicated by the steam rising from the pot.
+3. **Drying Excess Water**: The person is instructed to dry up any excess water in the pot, suggesting that the dish requires a certain consistency and not too much liquid.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**:
+   - **Load Ingredients**: Ensure that all necessary ingredients (meat, vegetables, etc.) are available and placed near the cooking area.
+   - **Set Up Cooking Area**: Position the pot on the stove and ensure it is clean and
+### Description of Events and Actions
+
+1. **Boiling Water**:
+   - A pot is filled with 2.5 liters of water and brought to a boil.
+   - Steam is visible, indicating that the water is boiling.
+
+2. **Adding Ingredients**:
+   - Various spices and ingredients are added to the boiling water.
+   - The ingredients include 4 cloves, 2 cinnamon sticks, and 4 cardamom pods.
+
+3. **Cooking Process**:
+   - The mixture is stirred and cooked for a while.
+   - The steam and bubbles indicate that the mixture is actively boiling.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Spiced Boiling Process",
+  "steps": [
+    {
+      "action": "fill_pot",
+      "parameters": {
+        "pot": "large_pot",
+        "liquid": "water",
+        "quantity": "2.5 liters"
+
+### Description of Events and Actions
+
+The video segment shows a sequence of steps involved in cooking, specifically focusing on the initial stages of preparing a dish. The key ingredients and actions observed are:
+
+1. **Cloves, Cinnamon, and Cardamom**: The video starts with adding cloves, cinnamon, and cardamom to a pot.
+2. **Shahjeera (Caraway Seeds)**: Caraway seeds are added to the pot.
+3. **Salt**: Salt is added to the pot.
+4. **Water**: Water is poured into the pot, likely to start the cooking process.
+
+### Corresponding Action Policy for Lerobot Framework
+
+To enable a robot to replicate these actions for completing the recipe, the following action policy can be implemented in the Lerobot framework:
+
+```python
+class RecipeActionPolicy:
+    def __init__(self):
+        self.ingredients = {
+            "cloves": 4,
+            "cinnamon": 
+### Description of Events and Actions
+
+1. **Initial Setup**: A pot is placed on a stove, and water is brought to a boil.
+2. **Adding Ingredients**: Salt and various spices are added to the boiling water.
+3. **Cooking Process**: Basmati rice, which has been soaked for 30 minutes, is added to the pot.
+4. **Stirring**: The contents of the pot are stirred to ensure even cooking.
+5. **Boiling**: The rice is allowed to boil until it is fully cooked.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Initial Setup**
+   - **Action**: Place the pot on the stove.
+   - **Action**: Turn on the stove and bring the water to a boil.
+
+2. **Adding Ingredients**
+   - **Action**: Measure and add 2.5 teaspoons of salt to the boiling water.
+   - **Action**: Add the required spices to the boiling water.
+
+
+### Description of Events and Actions
+
+The video segment shows the process of cooking basmati rice. The steps include:
+
+1. **Preparation**: Basmati rice (700 grams) is soaked for 30 minutes.
+2. **Cooking**: The soaked rice is added to a pot of boiling water.
+3. **Boiling**: The rice is boiled until it is fully cooked.
+4. **Stirring**: The rice is occasionally stirred to ensure even cooking.
+5. **Completion**: The rice is cooked and ready to be served.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Action**: Retrieve 700 grams of basmati rice.
+   - **Action**: Soak the rice in water for 30 minutes.
+
+2. **Cooking Phase**
+   - **Action**: Fill a pot with water and bring it to a boil.
+   - **Action**: Drain the soaked rice
+### Description of Events and Actions
+
+The video segment shows a sequence of steps involved in cooking rice in a pot. The main events and actions observed are:
+
+1. **Cooking Process**: The pot is filled with water and rice, and the mixture is being cooked until it is almost done (90%).
+2. **Stirring**: A spoon is used to stir the rice occasionally to ensure even cooking.
+3. **Checking Progress**: The texture and consistency of the rice are checked to determine if it is nearly cooked.
+4. **Final Check**: The rice is scooped out with a spoon to show its final consistency before it is fully done.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```yaml
+- action: "FillPot"
+  description: "Fill the pot with the required amount of water and rice according to the recipe."
+  parameters:
+    water_amount: "2 cups"
+    rice_amount: "1 cup"
+
+- action: "StartCooking
+### Description of Events and Actions
+
+The video segment shows the process of cooking rice in a flat pan. The steps include:
+1. Pouring raw rice into a pan.
+2. Distributing the rice evenly across the pan.
+3. Adding water to the pan.
+4. Stirring the rice and water mixture.
+5. Cooking the rice until it is fully done.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase:**
+   - **Action 1:** Retrieve a flat pan from the storage area.
+   - **Action 2:** Place the flat pan on the stove.
+
+2. **Cooking Phase:**
+   - **Action 3:** Retrieve a measured amount of raw rice from the pantry.
+   - **Action 4:** Pour the raw rice into the flat pan.
+   - **Action 5:** Use a spatula to distribute the rice evenly across the pan.
+
+3. **Water Addition Phase:**
+   - **Action 
+### Description of Events and Actions
+
+1. **Step 1**: A pan is placed on a stove, and half of the rice is arranged in the pan.
+2. **Step 2**: The rice is spread evenly across the pan using a spatula.
+3. **Step 3**: The remaining half of the rice is added on top of the first layer.
+4. **Step 4**: The rice is again spread evenly using the spatula.
+5. **Step 5**: Cooked chicken is placed on top of the layered rice.
+6. **Step 6**: The chicken is spread evenly over the rice.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Layered Rice and Chicken",
+  "steps": [
+    {
+      "action": "PlacePan",
+      "parameters": {
+        "pan": "flat pan",
+        "stove": "active"
+      }
+    },
+    {
+      "action":
+### Description of Events and Actions
+
+The video segment shows the process of preparing a dish involving cooked chicken and rice. The main steps observed are:
+
+1. **Preparation of Ingredients**: The chicken is already cooked and appears to be seasoned.
+2. **Layering the Rice**: A layer of white rice is spread evenly in a pot.
+3. **Placing the Chicken**: The cooked chicken is spread evenly on top of the rice layer.
+4. **Covering the Chicken**: The chicken is covered with a sauce or gravy, ensuring it is well-coated.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation of Ingredients**:
+   - **Action**: Identify and locate the cooked chicken and ensure it is seasoned.
+   - **Tool**: Use a spatula or tongs to handle the chicken.
+
+2. **Layering the Rice**:
+   - **Action**: Measure and spread a layer of white rice evenly in a pot.
+   -
+### Description of Events and Actions
+
+The video segment shows the preparation of a dish involving cooked chicken and rice. The main steps observed are:
+
+1. **Preparation of Ingredients**: The chicken is cooked and seasoned with various spices and ingredients.
+2. **Layering the Dish**: Rice is placed in a pot, and the cooked chicken is spread evenly on top of the rice.
+3. **Final Touches**: The dish is garnished and possibly seasoned further before serving.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation of Ingredients**:
+   - **Step 1.1**: Identify and gather all necessary ingredients for cooking the chicken.
+   - **Step 1.2**: Use a cutting board and knife to cut the chicken into desired pieces.
+   - **Step 1.3**: Place the chicken pieces in a cooking pot.
+   - **Step 1.4**: Add spices and other ingredients to the pot.
+  
+### Description of Events and Actions
+
+The video segment shows the preparation of a curry dish. The main events and actions observed include:
+
+1. **Cooking the Curry Base**: Ingredients such as onions, garlic, ginger, and spices are sautéed in a pan.
+2. **Adding Protein**: Pieces of meat or chicken are added to the pan and cooked until they are browned.
+3. **Incorporating Vegetables**: Various vegetables, such as bell peppers and tomatoes, are added to the mixture.
+4. **Simmering**: The curry is allowed to simmer, with occasional stirring, to blend the flavors.
+5. **Serving**: The cooked curry is served over a bed of rice.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**:
+   - **Step 1**: Identify and gather all necessary ingredients (onions, garlic, ginger, spices, protein, vegetables, and rice).
+
+### Description of Events and Actions
+
+The video segment shows the process of layering rice over a meat dish in a cooking pot. The steps observed are:
+
+1. A pot containing a meat dish is placed on a stove.
+2. Rice is being added on top of the meat dish in the pot.
+3. The rice is spread evenly over the meat dish.
+4. The text overlay "layer the top with balance rice" appears repeatedly, indicating the action being performed.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase:**
+   - Ensure the cooking area is clean and all necessary ingredients (meat dish and rice) are available.
+   - Place the pot containing the meat dish on the stove.
+
+2. **Heating Phase:**
+   - Turn on the stove to an appropriate heat setting to warm the meat dish if necessary.
+
+3. **Layering Phase:**
+   - **Action 1:** Pick up a container or bowl of rice.
+   - **
+### Description of Events and Actions
+
+The video segment shows the process of layering rice in a cooking pot. The steps include:
+1. Pouring rice into a pot.
+2. Using a ladle to spread the rice evenly.
+3. Repeating the process to create multiple layers of rice.
+4. Ensuring each layer is evenly distributed and flat.
+
+### Corresponding Action Policy for Lerobot Framework
+
+```json
+{
+  "recipe": "Layering Rice",
+  "steps": [
+    {
+      "action": "PickUpRice",
+      "parameters": {
+        "amount": "appropriate amount for one layer"
+      },
+      "description": "Pick up the required amount of rice for one layer."
+    },
+    {
+      "action": "PourRice",
+      "parameters": {
+        "location": "cooking pot"
+      },
+      "description": "Pour the picked-up rice into the cooking pot."
+    },
+    {
+      "action": "
+### Description of Events and Actions
+
+The video segment shows the preparation of a dish involving rice and mint leaves. The steps observed are:
+
+1. A pot of cooked white rice is shown.
+2. Fresh mint leaves are added to the rice.
+3. The mint leaves are mixed into the rice thoroughly.
+4. The dish is ready to be served.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Initialize Cooking Environment**
+   - Ensure the cooking area is clean and all necessary tools are available (pot, spoon, ingredients).
+
+2. **Cook Rice**
+   - Measure the required amount of rice.
+   - Rinse the rice thoroughly.
+   - Add water to the pot and bring it to a boil.
+   - Add the rice to the boiling water.
+   - Cook the rice according to the package instructions until it is tender and the water is absorbed.
+   - Drain any excess water.
+
+3. **Prepare Mint Leaves**
+   - Wash the mint leaves
+### Description of Events and Actions
+
+1. **Initial Setup**: A pot is placed on a stove, and white rice is added to the pot.
+2. **Adding Ingredients**: Fresh green mint leaves are sprinkled evenly over the rice.
+3. **Covering the Pot**: A lid is placed on the pot to cover it.
+4. **Cooking Process**: The pot is cooked on the stove for 7-8 minutes on low heat.
+5. **Final Check**: After the cooking time, the lid is removed to check the rice.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation**:
+   - **Action**: Retrieve a pot and place it on the stove.
+   - **Input**: Stove, pot
+
+2. **Ingredient Addition**:
+   - **Action**: Measure and add white rice to the pot.
+   - **Input**: White rice
+
+3. **Seasoning**:
+   - **Action**: Retrieve fresh mint leaves and evenly distribute
+### Description of Events and Actions
+
+1. **Initial Preparation**:
+   - A pot is placed on a stove.
+   - Ingredients, including rice and herbs, are added to the pot.
+   - A spoon is used to mix the ingredients.
+
+2. **Cooking Process**:
+   - The stove is turned on, and the mixture begins to cook.
+   - Steam rises from the pot, indicating that the contents are boiling.
+   - The mixture is stirred occasionally to ensure even cooking.
+
+3. **Final Touches**:
+   - As the rice and herbs cook, they are mixed thoroughly.
+   - The dish is garnished with additional herbs before serving.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Setup**:
+   - Place the pot on the stove.
+   - Add the required ingredients (rice and herbs) to the pot.
+   - Use a spoon to mix the ingredients thoroughly.
+
+2. **Cooking**:
+   - Turn on the stove to start cooking the
+### Description of Events and Actions
+
+The video segment shows the process of mixing rice and chicken evenly in a large pot. The pot is placed on a stove, and a spoon is used to stir the mixture. The rice appears to be white and fluffy, while the chicken is shredded and mixed throughout the rice. The action of mixing ensures that the chicken is evenly distributed among the rice grains.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase:**
+   - Ensure the stove is turned on and set to a low to medium heat.
+   - Place the pot containing the rice and chicken on the stove.
+
+2. **Mixing Phase:**
+   - Identify the spoon or mixing utensil in the pot.
+   - Use the spoon to stir the rice and chicken mixture.
+   - Move the spoon in a circular motion to ensure even distribution of the chicken among the rice grains.
+   - Continue stirring for a specified duration to achieve an even mix.
+
+3
+### Description of Events and Actions
+
+The video segment shows the process of mixing rice and chicken evenly in a large pot. The pot is placed on a stove, and the mixture appears to be a dish that combines cooked rice with pieces of chicken. The action involves using a utensil, likely a spoon or spatula, to ensure that the rice and chicken are well combined and evenly distributed throughout the pot.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Step 1:** Identify the ingredients (rice and chicken) and ensure they are cooked and ready to be mixed.
+   - **Step 2:** Place the cooked rice and chicken in a large pot suitable for cooking on a stove.
+
+2. **Cooking Phase**
+   - **Step 3:** Turn on the stove to a medium heat setting to keep the mixture warm.
+   - **Step 4:** Identify and pick up a suitable utensil (spoon
+### Description of Events and Actions
+
+The video segment shows the preparation of a rice dish, likely a type of biryani or pilaf, in a large pot on a stove. The main actions observed include:
+
+1. **Cooking the Rice**: The rice is being cooked in the pot, with visible steam indicating that it is being heated.
+2. **Mixing Ingredients**: Various ingredients, including spices, vegetables, and possibly meat, are being mixed into the rice.
+3. **Stirring**: The contents of the pot are being stirred to ensure even cooking and distribution of ingredients.
+4. **Adding Liquid**: Liquid, possibly water or broth, is being added to the pot to cook the rice and other ingredients.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Preparation Phase**
+   - **Step 1**: Place the pot on the stove and set it to medium heat.
+   - **Step 2**: Add the required amount of rice to
+### Description of Events and Actions
+
+The video segment shows the preparation and presentation of a dish, likely a type of biryani or similar rice-based dish with meat and spices. The main events and actions observed are:
+
+1. **Cooking Process**: The dish is being cooked in a large pot on a stove. The rice and meat are mixed together with various spices and ingredients.
+2. **Presentation**: The cooked dish is transferred to a serving bowl.
+3. **Final Touches**: The dish is garnished and presented, ready to be served.
+
+### Corresponding Action Policy for Lerobot Framework
+
+To enable a robot to replicate these actions, the following action policy can be outlined:
+
+1. **Preparation Phase**:
+   - **Ingredient Gathering**: The robot should be programmed to gather all necessary ingredients (rice, meat, spices, etc.) and place them on a work surface.
+   - **Cooking Utensils**: The robot should retrieve a large pot, a spoon
+### Description of Events and Actions Observed
+
+The video segment primarily features a close-up of a dish, which appears to be a type of biryani or rice dish with chicken and vegetables. The dish is presented in a white bowl. The video includes text overlays that encourage viewers to subscribe to a channel called "Spice Eats" and provides social media links for Facebook, Instagram, and Twitter. The text prompts viewers to click on the logo below to subscribe.
+
+### Corresponding Action Policy for Lerobot Framework
+
+1. **Identify Ingredients and Tools**:
+   - Identify the ingredients used in the dish (e.g., rice, chicken, vegetables, spices).
+   - Gather necessary tools (e.g., cooking pot, knife, cutting board, measuring cups, stove, mixing spoons).
+
+2. **Preparation Phase**:
+   - **Wash and Cut Vegetables**: Use a knife and cutting board to cut vegetables into appropriate sizes.
+   - **Prepare Chicken

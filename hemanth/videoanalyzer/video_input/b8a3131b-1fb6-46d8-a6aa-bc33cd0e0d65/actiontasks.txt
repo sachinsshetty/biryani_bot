@@ -1,0 +1,20 @@
+Here are the action policy tasks relevant to LeRobot based on the provided descriptions:
+
+1. **Initial Setup**:
+   - Place an empty pan on the stove.
+   - Ensure the pan is clean and ready for cooking.
+
+2. **Adding Ingredients**:
+   - Measure and slice the required amount of onions (5 medium onions).
+   - Slice the onions into thin pieces and set them aside.
+   - Add sliced onions to the pan.
+   - Add ginger garlic paste to the pan with the fried onions.
+
+3. **Cooking Process**:
+   - Fry the onions in oil for 10-12 minutes on medium heat until they turn light brown.
+   - Stir the contents of the pan occasionally to ensure even cooking.
+   - Add raw chicken pieces to the pan and fry on high heat.
+   - Stir the chicken pieces with a wooden spatula.
+
+4. **Adding Spices and Water**:
+   - Add biryani masala (5 tbsp) to the pot

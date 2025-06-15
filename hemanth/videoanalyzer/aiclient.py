@@ -54,11 +54,43 @@ def call_dwani_Vision(imagePath, prompt):
     return response["answer"]
 
 def call_dwani_chat_raw(prompt):
-    dwani.api_key = settings.DWANI_API_KEY
-    dwani.api_base = settings.DWANI_API_URL
-    response = dwani.Vision.caption_direct_raw(
-        query=prompt,
-        model=settings.AI_MODEL_NAME
-    )
-    print(response)
-    return response["answer"]
+    url = settings.DWANI_API_URL+"/v1/visual_query_raw"
+    headers = {"Content-Type": "application/json"}
+    data = {
+        "model": settings.AI_MODEL_NAME,
+        "messages": prompt
+    }
+    response = requests.post(url, headers=headers, json=data)
+    if response.status_code != 200:
+        raise Exception(f"LM Studio API error: {response.text}")
+    return response.json()["choices"][0]["message"]["content"]
+
+def call_dwani_chat_raw(prompt):
+    url = settings.DWANI_API_URL+"/v1/visual_query_raw"
+    headers = {"Content-Type": "application/json"}
+    data = {
+        "model": settings.AI_MODEL_NAME,
+        "messages": prompt
+    }
+    response = requests.post(url, headers=headers, json=data)
+    if response.status_code != 200:
+        raise Exception(f"LM Studio API error: {response.text}")
+    return response.json()["choices"][0]["message"]["content"]
+
+def call_ai_cloud(messages, model, max_tokens=200):
+    url = settings.AI_CLOUD_API_URL
+    headers = {"Content-Type": "application/json","Authorization": f"Bearer {settings.AI_CLOUD_API_KEY}"}
+    data = {
+        "model": model,
+        "messages": messages,
+        "max_tokens": max_tokens,
+        "temperature": 0.2,
+    }
+    #print(f"headers = {headers}")
+    response = requests.post(url, headers=headers, json=data)
+    #print(response)
+    if response.status_code != 200:
+        print(response)
+        print(response.text)
+        raise Exception(f"API error: {response.text}")
+    return response.json()["choices"][0]["message"]["content"]
