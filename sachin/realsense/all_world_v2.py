@@ -73,7 +73,7 @@ def _describe_image_sync(image):
                 if os.path.exists(temp_file):
                     os.remove(temp_file)
     except Exception:
-        return None  # Silently ignore all errors
+        return None
     return None
 
 # Asynchronous wrapper for describe_image
@@ -86,19 +86,26 @@ async def describe_image(image):
 async def process_queue():
     global world_state
     while True:
-        frame_data = await asyncio.get_event_loop().run_in_executor(None, frame_queue.get)
-        rgb_image, timestamp, camera_serial = frame_data
         try:
-            description = await describe_image(rgb_image.copy())
-            if description:
-                world_state["timestamp"] = timestamp
-                world_state["camera_serial"] = camera_serial
-                world_state["description"] = description
-                save_world_state()
+            frame_data = await asyncio.get_event_loop().run_in_executor(None, frame_queue.get)
+            rgb_image, timestamp, camera_serial = frame_data
+            print(f"Processing frame from camera {camera_serial} at {timestamp}")  # Debug
+            try:
+                description = await describe_image(rgb_image.copy())
+                if description:
+                    world_state["timestamp"] = timestamp
+                    world_state["camera_serial"] = camera_serial
+                    world_state["description"] = description
+                    save_world_state()
+                    print(f"Description for camera {camera_serial}: {description}")  # Debug
+                else:
+                    print(f"No description for camera {camera_serial}")  # Debug
+            except Exception:
+                pass  # Silently ignore processing errors
+            finally:
+                frame_queue.task_done()
         except Exception:
-            pass  # Silently ignore processing errors
-        finally:
-            frame_queue.task_done()
+            pass  # Silently handle queue errors
         await asyncio.sleep(0)
 
 # Main async function to run the pipeline
@@ -125,6 +132,7 @@ async def main():
             pipelines.append(pipeline)
             serial_numbers.append(serial)
             last_queue_times[serial] = time.time()
+            print(f"Initialized camera {serial}")
         except Exception:
             continue  # Skip cameras that fail to initialize
 
@@ -132,7 +140,7 @@ async def main():
         print("No cameras could be initialized. Exiting.")
         return
 
-    print(f"Initialized {len(pipelines)} RealSense camera(s).")
+    print(f"Running with {len(pipelines)} RealSense camera(s).")
 
     # Start the queue processing task
     queue_task = asyncio.create_task(process_queue())
@@ -151,22 +159,24 @@ async def main():
 
                     rgb_image = np.asanyarray(rgb_frame.get_data())
 
-                    # Add frame to queue every 3 seconds if queue is not full
+                    # Add frame to queue every 3 seconds
                     current_time = time.time()
                     if current_time - last_queue_times[serial] >= description_interval:
-                        if not frame_queue.full():
+                        try:
                             timestamp = datetime.now().isoformat()
-                            frame_queue.put_nowait((rgb_image.copy(), timestamp, serial))
-                            last_queue_times[serial] = current_time
-                        else:
-                            try:
-                                frame_queue.get_nowait()
-                                frame_queue.task_done()
-                                timestamp = datetime.now().isoformat()
+                            if not frame_queue.full():
                                 frame_queue.put_nowait((rgb_image.copy(), timestamp, serial))
                                 last_queue_times[serial] = current_time
-                            except:
-                                pass
+                                print(f"Queued frame from camera {serial} at {timestamp}")  # Debug
+                            else:
+                                # Replace oldest frame if queue is full
+                                frame_queue.get_nowait()
+                                frame_queue.task_done()
+                                frame_queue.put_nowait((rgb_image.copy(), timestamp, serial))
+                                last_queue_times[serial] = current_time
+                                print(f"Replaced frame in queue for camera {serial} at {timestamp}")  # Debug
+                        except Exception:
+                            pass  # Silently handle queue errors
 
                     # Display RGB image
                     cv2.imshow(f'RealSense RGB - Camera {serial}', rgb_image)
@@ -186,12 +196,11 @@ async def main():
             await queue_task
         except asyncio.CancelledError:
             pass
-        # Stop all pipelines
         for pipeline, serial in zip(pipelines, serial_numbers):
             try:
                 pipeline.stop()
             except Exception:
-                pass  # Silently ignore stop errors
+                pass
         cv2.destroyAllWindows()
         executor.shutdown(wait=True)
 
