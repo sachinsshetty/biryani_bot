@@ -21,7 +21,7 @@ export PYTHONPATH=$PYTHONPATH:/usr/local/lib
 python3.10 -m venv venv
 source venv/bin/activate
 
-pip install pyrealsense2 numpy opencv-python dwani paho-mqtt
+pip install pyrealsense2 numpy opencv-python dwani paho-mqtt gradio watchdog pandas
 
 
 python world_state.py
