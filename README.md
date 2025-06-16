@@ -1,21 +1,25 @@
 Biryani Bot
 
+- Video to Recipe : Hemanth K
+- World Model : Sachin
+
 - Running the Robot
   ```bash
   python -m venv venv
   source venv/bin/activate
   pip install -r requirements.txt
   ```
+
 - Video to Recipe
   ```bash
-  cd hemanth/
+  cd video_to_recipe/
   uvicorn main:app
   ```
 
-- World State
+- World Model
   ```bash
-  cd sachin/realsense
-  python world_state.py
+  cd world_model
+  python all_world_v2.py
   ```
 
 ---
