@@ -64,7 +64,42 @@ source venv/bin/activate
 
 
 pip install -r requirements.txt
-python src/server/robot.py --host 0.0.0.0 --port 8888
+python src/server/robot.py --host 0.0.0.0 --port 
+
+
+
+
+ 
+- Simple Inference
+
+export DWANI_API_KEY='your_api_key_here'
+
+export DWANI_API_BASE_URL='https://dwani-biryani.hf.space'
+
+git clone https://github.com/sachinsshetty/biryani_bot
+
+cd sachin/server
+
+python vlm.py
+
+or 
+```python
+import dwani
+import os
+
+dwani.api_key = os.getenv("DWANI_API_KEY")
+
+dwani.api_base = os.getenv("DWANI_API_BASE_URL")
+
+
+result = dwani.Vision.caption_direct(
+    file_path="image.png",
+    query="Describe this logo",
+    model="gemma3"
+)
+print(result)
+```
+
 
 
 <!-- 
