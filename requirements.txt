@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+websockets
+requests
+pydantic-settings
+yt-dlp
+opencv-python
+dwani
+pyrealsense2 
+numpy 
+paho-mqtt
+gradio
+watchdog
+pandas
