@@ -1,5 +1,9 @@
 Biryani Bot
 
+Workflow
+![biryani-bot-workflow](docs/biryani-bot.drawio.png)
+
+
 - Video to Recipe : Hemanth K
 - World Model : Sachin
 
